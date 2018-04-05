@@ -17,8 +17,13 @@ class App extends Component {
     taskInputValue: '',
     names: [],
     tasks: [],
-    duration: '',
-    frequency: ''
+    duration: 8,
+    frequency: 1
+  }
+
+  handleDuration = (evt) => {
+    console.log('changed duration');
+    this.setState({ duration: evt.target.value });
   }
 
   handleNameDelete = (index) => {
@@ -26,6 +31,11 @@ class App extends Component {
     const names = this.state.names;
     names.splice(index, 1);
     this.setState({ names });
+  }
+
+  handleFreq = (evt) => {
+    console.log('changed frequency');
+    this.setState({ frequency: evt.target.value });
   }
 
   handleTaskDelete = (index) => {
@@ -98,7 +108,11 @@ class App extends Component {
           </div>
           <div className="Length-freq">
             <h2>Length and Frequency</h2>
-            <Frequency />
+            <Frequency 
+            handleDuration={this.handleDuration}
+            duration ={this.state.duration}
+            handleFreq={this.handleFreq}
+            />
           </div>
         </div>
         <div className="Schedule">
