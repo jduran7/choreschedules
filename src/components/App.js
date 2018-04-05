@@ -64,51 +64,53 @@ class App extends Component {
   }
 
   render() {
+    var today = new Date();
+    var lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+
     return (
       <div className="App">
-      <div className="Settings">
-        <div className="Name-input">
-          Names
-          <Names
-            handleNameChange={this.handleNameChange}
-            nameInputValue={this.state.nameInputValue}
-            handleNameSubmit={this.handleNameSubmit}
-          />
-          <List
-            handleNameDelete={this.handleNameDelete}
-            names={this.state.names}
-          />
+        <div className="Settings">
+          <div className="Name-input">
+            Names
+            <Names
+              handleNameChange={this.handleNameChange}
+              nameInputValue={this.state.nameInputValue}
+              handleNameSubmit={this.handleNameSubmit}
+            />
+            <List
+              handleNameDelete={this.handleNameDelete}
+              names={this.state.names}
+            />
+          </div>
+          <div className="Tasks-input">
+            Tasks
+            <Tasks
+              handleTaskChange={this.handleTaskChange}
+              taskInputValue={this.state.taskInputValue}
+              handleTaskSubmit={this.handleTaskSubmit}
+            />
+            <TaskList
+              handleTaskDelete={this.handleTaskDelete}
+              tasks={this.state.tasks}
+            />
+          </div>
+          <div className="Length-freq">
+            Length and Frequency
+            <Frequency />
+          </div>
         </div>
-        <div className="Tasks-input">
-          Tasks
-          <Tasks
-            handleTaskChange={this.handleTaskChange}
-            taskInputValue={this.state.taskInputValue}
-            handleTaskSubmit={this.handleTaskSubmit}
-          />
-          <TaskList
-            handleTaskDelete={this.handleTaskDelete}
-            tasks={this.state.tasks}
-          />
-        </div>
-        <div className="Frequency">
-          Length and Frequency
-          <Frequency />
-          
-        </div>
-      </div>
         <div className="Schedule">
           <Schedule 
             people={this.state.names}
             tasks={this.state.tasks}
           />
           <InfiniteCalendar
-            min={new Date(2018, 3, 2)} // Minimum month to render
-            minDate={new Date(2018, 4, 3)} // Minimum selectable date
-            selected={new Date(2018, 4, 7)}
+            width={300}
+            height={400}
+            selected={today}
+            minDate={today}
           />
-        </div>
-        
+        </div> 
       </div>
     );
   }

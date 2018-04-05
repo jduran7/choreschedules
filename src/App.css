@@ -2,14 +2,36 @@
   text-align: center;
 }
 
-.Settings {
+/*.Settings {
   column-count: 3;
   column-gap: 1px;
   background-color: #222;
   height: 300px;
   padding: 20px;
   color: white;
-  overflow: visible;
+  overflow: hidden;
+}*/
+
+* {
+    box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.Name-input, .Tasks-input, .Length-freq {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  background-color: #222;
+  min-height: 400px;
+  padding: 20px;
+  color: white;
+}
+
+/* Clear floats after the columns */
+.Settings:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .Schedule {
