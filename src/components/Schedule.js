@@ -109,9 +109,37 @@ class Schedule extends Component {
     // });
 
     render() {
+
         return(
             <div className="Schedule">
-            ( Schedule will go here )
+            
+                <div className="currentState">
+                    <b>Your current state is:</b>
+                    <ul>
+                        <li>People:</li>
+                        <ul>
+                        {this.props.people.map((name) => {
+                            return (
+                                <li>{name.value}</li> 
+                            )
+                        })} 
+                        </ul>
+                        
+                        <li>Tasks:</li>
+                        <ul>
+                        {this.props.tasks.map((task) => {
+                            return (
+                                <li>{task.value}</li> 
+                            )
+                        })}
+                        </ul>
+                        
+                        <li>Duration: {this.props.duration}</li>
+                        <li>Frequency: {this.props.frequency}</li>
+                    </ul>
+                </div>
+
+
             </div>
         )
     }

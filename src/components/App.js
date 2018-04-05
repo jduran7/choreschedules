@@ -18,7 +18,8 @@ class App extends Component {
     names: [],
     tasks: [],
     duration: 8,
-    frequency: 1
+    frequency: 1,
+    startDate: ''
   }
 
   handleDuration = (evt) => {
@@ -119,6 +120,8 @@ class App extends Component {
           <Schedule 
             people={this.state.names}
             tasks={this.state.tasks}
+            duration={this.state.duration}
+            frequency={this.state.frequency}
           />
           <InfiniteCalendar
             width={300}

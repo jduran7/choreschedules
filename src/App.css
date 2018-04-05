@@ -1,4 +1,4 @@
-.App {
+.Settings {
   text-align: center;
 }
 
@@ -36,8 +36,8 @@
 
 .Schedule {
   padding: 20px;
-  text-align: center;
-  margin: auto;
+  /* text-align: center; */
+  /* margin: auto; */
 }
 
 /* .Name-input, .Tasks-input, .Frequency {
