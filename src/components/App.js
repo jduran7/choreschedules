@@ -16,7 +16,9 @@ class App extends Component {
     nameInputValue: '',
     taskInputValue: '',
     names: [],
-    tasks: []
+    tasks: [],
+    duration: '',
+    frequency: ''
   }
 
   handleNameDelete = (index) => {
@@ -71,7 +73,7 @@ class App extends Component {
       <div className="App">
         <div className="Settings">
           <div className="Name-input">
-            Names
+            <h2>Names</h2>
             <Names
               handleNameChange={this.handleNameChange}
               nameInputValue={this.state.nameInputValue}
@@ -83,7 +85,7 @@ class App extends Component {
             />
           </div>
           <div className="Tasks-input">
-            Tasks
+            <h2>Tasks</h2>
             <Tasks
               handleTaskChange={this.handleTaskChange}
               taskInputValue={this.state.taskInputValue}
@@ -95,7 +97,7 @@ class App extends Component {
             />
           </div>
           <div className="Length-freq">
-            Length and Frequency
+            <h2>Length and Frequency</h2>
             <Frequency />
           </div>
         </div>

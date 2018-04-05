@@ -35,10 +35,9 @@
 }
 
 .Schedule {
-  padding-top: 20px;
+  padding: 20px;
   text-align: center;
   margin: auto;
-  padding: 0;
 }
 
 /* .Name-input, .Tasks-input, .Frequency {
