@@ -6,7 +6,8 @@ import List from './List';
 import TaskList from './TaskList';
 import Frequency from './Frequency';
 import Schedule from './Schedule';
-import moment from 'moment';
+import Calendar from 'react-calendar';
+// import moment from 'moment';
 import InfiniteCalendar from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
 
@@ -19,40 +20,46 @@ class App extends Component {
     tasks: [],
     duration: 8,
     frequency: 1,
-    startDate: ''
+    startDate: '',
+    people: [],
+    taskList: []
   }
 
   handleDuration = (evt) => {
-    console.log('changed duration');
+    // console.log('changed duration');
     this.setState({ duration: evt.target.value });
   }
 
   handleNameDelete = (index) => {
-    console.log('delete clicked', index);
+    // console.log('delete clicked', index);
     const names = this.state.names;
+    const people = this.state.people;
     names.splice(index, 1);
-    this.setState({ names });
+    people.splice(index, 1)
+    this.setState({ names, people });
   }
 
   handleFreq = (evt) => {
-    console.log('changed frequency');
+    // console.log('changed frequency');
     this.setState({ frequency: evt.target.value });
   }
 
   handleTaskDelete = (index) => {
-    console.log('delete clicked', index);
+    // console.log('delete clicked', index);
     const tasks = this.state.tasks;
+    const myTasks = this.state.taskList;
     tasks.splice(index, 1);
-    this.setState({ tasks });
+    myTasks.splice(index, 1);
+    this.setState({ tasks, taskList:myTasks });
   }
 
   handleNameChange = (evt) => {
-    console.log(evt.target.value);
+    // console.log(evt.target.value);
     this.setState({ nameInputValue: evt.target.value })
   }
 
   handleTaskChange = (evt) => {
-    console.log(evt.target.value);
+    // console.log(evt.target.value);
     this.setState({ taskInputValue: evt.target.value })
   }
 
@@ -62,8 +69,11 @@ class App extends Component {
       value: this.state.nameInputValue
     };
     const names = this.state.names;
+    const myPeople = this.state.people;
+
     names.push(newName);
-    this.setState({ names, nameInputValue:'' })
+    myPeople.push(newName.value);
+    this.setState({ names, nameInputValue:'' , people:myPeople})
   }
 
   handleTaskSubmit = (evt) => {
@@ -72,13 +82,15 @@ class App extends Component {
       value: this.state.taskInputValue
     };
     const tasks = this.state.tasks;
+    const myTasks = this.state.taskList;
     tasks.push(newTask);
-    this.setState({ tasks, taskInputValue:'' })
+    myTasks.push(newTask.value);
+    this.setState({ tasks, taskInputValue:'', taskList: myTasks })
   }
 
   render() {
     var today = new Date();
-    var lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+    // var lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
 
     return (
       <div className="App">
@@ -118,17 +130,18 @@ class App extends Component {
         </div>
         <div className="Schedule">
           <Schedule 
-            people={this.state.names}
-            tasks={this.state.tasks}
+            people={this.state.people}
+            taskList={this.state.taskList}
             duration={this.state.duration}
             frequency={this.state.frequency}
           />
-          <InfiniteCalendar
+          {/* <InfiniteCalendar
             width={300}
             height={400}
             selected={today}
             minDate={today}
-          />
+          /> */}
+          <Calendar className="myCal"/>
         </div> 
       </div>
     );

@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 
-import Name from './Name'
 
 class Schedule extends Component {
 
     //Returns Monday and Sunday of a week
     //format: dddd is day of the week (text), MMMM is month (text), DD is day of the month (number).
-    getWeek = (x,interval) => {
-        var firstDay = x.weekday(1).format('MMMM DD');
-        var lastDay = x.clone().add(6*interval+(interval-1),"day");
-        if(lastDay.format('MMMM')!= x.format('MMMM')){
-            lastDay = lastDay.format('MMMM DD');
-        }
-        else{
-            lastDay = lastDay.format('DD');
-        }
-        return firstDay + " - " + lastDay;
-    }
+    // getWeek = (x,interval) => {
+    //     var firstDay = x.weekday(1).format('MMMM DD');
+    //     var lastDay = x.clone().add(6*interval+(interval-1),"day");
+    //     if(lastDay.format('MMMM')!= x.format('MMMM')){
+    //         lastDay = lastDay.format('MMMM DD');
+    //     }
+    //     else{
+    //         lastDay = lastDay.format('DD');
+    //     }
+    //     return firstDay + " - " + lastDay;
+    // }
     
     //Sets a list of Mondays and Sundays for x number of upcoming weeks as the keys of the chores object
     // generateList = (weeks,interval) => {
@@ -114,28 +113,12 @@ class Schedule extends Component {
             <div className="Schedule">
             
                 <div className="currentState">
-                    <b>Your current state is:</b>
+                    <h3>Your current state is:</h3>
                     <ul>
-                        <li>People:</li>
-                        <ul>
-                        {this.props.people.map((name) => {
-                            return (
-                                <li>{name.value}</li> 
-                            )
-                        })} 
-                        </ul>
-                        
-                        <li>Tasks:</li>
-                        <ul>
-                        {this.props.tasks.map((task) => {
-                            return (
-                                <li>{task.value}</li> 
-                            )
-                        })}
-                        </ul>
-                        
-                        <li>Duration: {this.props.duration}</li>
-                        <li>Frequency: {this.props.frequency}</li>
+                        <li><b>People:</b> [{this.props.people.join(", ")}]</li>
+                        <li><b>Tasks:</b> [{this.props.taskList.join(", ")}]</li>
+                        <li><b>Duration:</b> {this.props.duration}</li>
+                        <li><b>Frequency:</b> {this.props.frequency}</li>
                     </ul>
                 </div>
 
