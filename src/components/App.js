@@ -8,7 +8,7 @@ import Frequency from './Frequency';
 import Schedule from './Schedule';
 import Calendar from 'react-calendar';
 // import moment from 'moment';
-import InfiniteCalendar from 'react-infinite-calendar';
+// import InfiniteCalendar from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
   state = {
     nameInputValue: '',
     taskInputValue: '',
-    names: [],
+     names: [],
     tasks: [],
     duration: 8,
     frequency: 1,
@@ -89,8 +89,6 @@ class App extends Component {
   }
 
   render() {
-    var today = new Date();
-    // var lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
 
     return (
       <div className="App">
@@ -135,14 +133,12 @@ class App extends Component {
             duration={this.state.duration}
             frequency={this.state.frequency}
           />
-          {/* <InfiniteCalendar
-            width={300}
-            height={400}
-            selected={today}
-            minDate={today}
-          /> */}
           <Calendar className="myCal"/>
-        </div> 
+          <button>Generate schedule</button>
+        </div>
+        <div className="generatedTable">
+          {"generated table will go here"}
+        </div>
       </div>
     );
   }
