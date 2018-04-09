@@ -7,6 +7,7 @@ import TaskList from './TaskList';
 import Frequency from './Frequency';
 import Schedule from './Schedule';
 import Calendar from 'react-calendar';
+import Table from './Table';
 // import moment from 'moment';
 // import InfiniteCalendar from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
@@ -138,6 +139,10 @@ class App extends Component {
         </div>
         <div className="generatedTable">
           {"generated table will go here"}
+          <Table
+            people = {this.state.people}
+            tasks = {this.state.taskList}
+          />
         </div>
       </div>
     );
