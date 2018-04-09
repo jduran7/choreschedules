@@ -69,10 +69,6 @@ class Schedule extends Component {
           return finalSchedule;
         }
 
-        var source = assignChores(this.props.people, this.props.taskList, this.props.duration, this.props.frequency);
-        var table = '';
-        var rows = Object.keys(source);
-        var cols = this.props.taskList.length;
 
         return(
             <div className="Schedule">
@@ -91,8 +87,6 @@ class Schedule extends Component {
                         <li><b>Shuffled name array:</b> {shuffle(this.props.people).join(", ")}</li>
                         <li><b>Shuffled task list:</b> {shuffle(this.props.taskList).join(", ")}</li>
                         <li><b>Weeklist:</b> {generateList(this.props.duration, this.props.frequency).join(", ")}.</li>
-                        <li><b>Table elements:</b> {JSON.stringify(assignChores(this.props.people, this.props.taskList, 
-                            this.props.duration, this.props.frequency))}</li>
                     </ul>
                     
                 </div>

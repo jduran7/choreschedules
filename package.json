@@ -5,12 +5,14 @@
   "dependencies": {
     "moment": "^2.22.0",
     "moment-range": "^3.1.1",
-    "react": "^16.3.0",
+    "react": "^16.3.1",
     "react-addons-css-transition-group": "^15.6.2",
+    "react-bootstrap": "^0.32.1",
     "react-calendar": "^2.14.0",
-    "react-dom": "^16.3.0",
+    "react-dom": "^16.3.1",
     "react-infinite-calendar": "^2.3.1",
     "react-input-calendar": "^0.5.2",
+    "react-materialize": "^2.1.4",
     "react-scripts": "^1.1.1"
   },
   "scripts": {

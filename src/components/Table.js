@@ -4,7 +4,7 @@ import moment from 'moment';
 class Table extends Component {
     render(){
 
-    	var tasks = this.props.tasks;
+    	var myTasks = this.props.tasks;
 
     	function shuffle(array) {
             var copy = array.slice(), newArray = [], n = array.length, i;
@@ -69,13 +69,13 @@ class Table extends Component {
 
         var source = assignChores(this.props.people, this.props.tasks, this.props.duration, this.props.frequency);
 		var rows = Object.keys(source);
-		var cols = tasks.length;
+		var cols = this.props.tasks.length;
 
     	function renderTable() {
     		var table = '';
-    		table+='<thead><tr><td></td>'; 
-			for(var i=0;i<tasks.length;i++){
-			  table+='<td><b>'+tasks[i]+'</b></td>';
+    		table+='<thead class="thead-light"><tr><td></td>'; 
+			for(var i=0;i<myTasks.length;i++){
+			  table+='<td><b>'+myTasks[i]+'</b></td>';
 			}
 			table+='</tr></thead>';
 
@@ -86,8 +86,9 @@ class Table extends Component {
 			  }
 			  table+='</tr>';
 			}
-			return table;
-    	}
+			return {__html: '<table class="table">'+table+'</table>'};
+        }
+
 
     	
 
@@ -95,10 +96,7 @@ class Table extends Component {
         return (
             <div className="myTable">
                 <div id="main">
-                	<table className="striped centered">
-                		{renderTable()}
-                		{console.log(source)}
-                	</table>
+                	<div dangerouslySetInnerHTML={renderTable()} />
                 </div>
             </div>
         )

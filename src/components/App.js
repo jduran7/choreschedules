@@ -17,7 +17,7 @@ class App extends Component {
   state = {
     nameInputValue: '',
     taskInputValue: '',
-     names: [],
+    names: [],
     tasks: [],
     duration: 8,
     frequency: 1,
@@ -138,10 +138,11 @@ class App extends Component {
           <button>Generate schedule</button>
         </div>
         <div className="generatedTable">
-          {"generated table will go here"}
           <Table
             people = {this.state.people}
             tasks = {this.state.taskList}
+            duration={this.state.duration}
+            frequency={this.state.frequency}
           />
         </div>
       </div>
