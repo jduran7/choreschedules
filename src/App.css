@@ -1,6 +1,14 @@
 
+.App{
+  max-width: 1200px;
+  margin: auto;
+  padding: 0;
+  border: solid 1px;
+}
+
 .Settings {
   text-align: center;
+  border-bottom: solid 1px;
 }
 
 * {
@@ -12,8 +20,6 @@
   float: left;
   width: 33.33%;
   padding: 10px;
-  /* background-color: #222; */
-  /* background-color: white; */
   min-height: 400px;
   padding: 20px;
 }
@@ -25,21 +31,22 @@
   clear: both;
 }
 
-.Schedule {
+.CurrentConfig {
   padding: 20px;
-  /* text-align: center; */
-  /* margin: auto; */
+  border-bottom: solid 1px;
 }
 
-/* .Name-input, .Tasks-input, .Frequency {
-  background-color: #222;
-  height: 300px;
-  padding: 20px;
-  color: white;
-} */
 
 .Names, .Name, .Tasks, .Task, .Frequency{
   padding-top: 15px;
+}
+
+.Frequency{
+  text-align: justify;
+  text-justify: inter-word;
+  max-width: 80%;
+  margin: auto;
+  padding: 0;
 }
 
 .DeleteButton, .UnitSelection {
@@ -97,9 +104,7 @@
 .generatedTable{
 
   margin: auto;
-  margin-top: 2.5%;
-  margin-bottom: 2.5%;
-  border-radius: 5px;
+  padding-top: 5%;
   padding: 0;
   background: white;
     -webkit-touch-callout: none; /* iOS Safari */

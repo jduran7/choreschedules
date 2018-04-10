@@ -89,10 +89,6 @@ class Table extends Component {
 			return {__html: '<table class="table">'+table+'</table>'};
         }
 
-
-    	
-
-
         return (
             <div className="myTable">
                 <div id="main">

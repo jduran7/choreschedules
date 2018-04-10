@@ -95,7 +95,7 @@ class App extends Component {
       <div className="App">
         <div className="Settings">
           <div className="Name-input">
-            <h2>Names</h2>
+            <h3>Names</h3>
             <Names
               handleNameChange={this.handleNameChange}
               nameInputValue={this.state.nameInputValue}
@@ -107,7 +107,7 @@ class App extends Component {
             />
           </div>
           <div className="Tasks-input">
-            <h2>Tasks</h2>
+            <h3>Tasks</h3>
             <Tasks
               handleTaskChange={this.handleTaskChange}
               taskInputValue={this.state.taskInputValue}
@@ -119,7 +119,7 @@ class App extends Component {
             />
           </div>
           <div className="Length-freq">
-            <h2>Length and Frequency</h2>
+            <h3>Length and Frequency</h3>
             <Frequency 
             handleDuration={this.handleDuration}
             duration ={this.state.duration}
@@ -127,7 +127,7 @@ class App extends Component {
             />
           </div>
         </div>
-        <div className="Schedule">
+        <div className="CurrentConfig">
           <Schedule 
             people={this.state.people}
             taskList={this.state.taskList}

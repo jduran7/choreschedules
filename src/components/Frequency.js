@@ -13,16 +13,16 @@ class Frequency extends Component {
                             <option value="months">Months</option>
                         </select>
                     </div>
-                    {" and participants should do these chores on a "}
-                    <div className="FreqSelection">
+                    {" and participants should be doing these chores "}
+                    {/* <div className="FreqSelection"> */}
                         <select onChange={(evt) => this.props.handleFreq(evt)}>
                             <option value="1">Weekly</option>
                             <option value="2">Every 2 weeks</option>
                             <option value="3">Every 3 weeks</option>
-                            <option value="4">Once per month</option>
+                            {/* <option value="4">Once per month</option> */}
                         </select>
-                    </div>
-                    {"basis"}
+                    {/* </div> */}
+                    
                 </form>
             </div>
         )

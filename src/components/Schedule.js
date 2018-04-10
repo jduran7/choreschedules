@@ -6,8 +6,6 @@ class Schedule extends Component {
 
     render() {
 
-
-
         function shuffle(array) {
             var copy = array.slice(), newArray = [], n = array.length, i;
 
@@ -46,29 +44,6 @@ class Schedule extends Component {
             }
             return weekList;
         }
-
-        function assignChores(people, tasks, weeks, interval){
-          var myPeople = shuffle(people);
-          var myList = generateList(weeks, interval);
-          var sequence = [];
-          var sortedSequence = [];
-          var finalSchedule = {};
-          
-          for(var i=0;i<weeks/interval;i++){
-            for(var j=0;j<tasks.length;j++){
-              sequence.push(myPeople[(i+j)%myPeople.length]);
-            }
-            sortedSequence.push(sequence);
-            sequence = [];
-          }
-
-          for(var k=0;k<sortedSequence.length;k++){
-            finalSchedule[myList[k]] = sortedSequence[k];
-          }
-
-          return finalSchedule;
-        }
-
 
         return(
             <div className="Schedule">
