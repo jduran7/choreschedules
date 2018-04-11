@@ -5,8 +5,8 @@ import Tasks from './Tasks';
 import List from './List';
 import TaskList from './TaskList';
 import Frequency from './Frequency';
-import Schedule from './Schedule';
-import Calendar from 'react-calendar';
+// import Schedule from './Schedule';
+// import Calendar from 'react-calendar';
 import Table from './Table';
 // import moment from 'moment';
 // import InfiniteCalendar from 'react-infinite-calendar';
@@ -18,7 +18,8 @@ class App extends Component {
     nameInputValue: '',
     taskInputValue: '',
     names: [],
-    tasks: [],
+    tasks: [
+    ],
     duration: 8,
     frequency: 1,
     startDate: '',
@@ -92,58 +93,60 @@ class App extends Component {
   render() {
 
     return (
-      <div className="App">
-        <div className="Settings">
-          <div className="Name-input">
-            <h3>Names</h3>
-            <Names
-              handleNameChange={this.handleNameChange}
-              nameInputValue={this.state.nameInputValue}
-              handleNameSubmit={this.handleNameSubmit}
+      <div className="App-container">
+        <div className="App">
+          <div className="Settings">
+            <div className="Name-input">
+              <h4>Names</h4>
+              <Names
+                handleNameChange={this.handleNameChange}
+                nameInputValue={this.state.nameInputValue}
+                handleNameSubmit={this.handleNameSubmit}
+              />
+              <List
+                handleNameDelete={this.handleNameDelete}
+                names={this.state.names}
+              />
+            </div>
+            <div className="Tasks-input">
+              <h4>Tasks</h4>
+              <Tasks
+                handleTaskChange={this.handleTaskChange}
+                taskInputValue={this.state.taskInputValue}
+                handleTaskSubmit={this.handleTaskSubmit}
+              />
+              <TaskList
+                handleTaskDelete={this.handleTaskDelete}
+                tasks={this.state.tasks}
+              />
+            </div>
+            <div className="Length-freq">
+              <h4>Length & Frequency</h4>
+              <Frequency 
+              handleDuration={this.handleDuration}
+              duration ={this.state.duration}
+              handleFreq={this.handleFreq}
+              />
+            </div>
+          </div>
+          {/* <div className="CurrentConfig">
+            <Schedule 
+              people={this.state.people}
+              taskList={this.state.taskList}
+              duration={this.state.duration}
+              frequency={this.state.frequency}
             />
-            <List
-              handleNameDelete={this.handleNameDelete}
-              names={this.state.names}
+            <Calendar className="myCal"/>
+            <button>Generate schedule</button>
+          </div> */}
+          <div className="generatedTable">
+            <Table
+              people = {this.state.people}
+              tasks = {this.state.taskList}
+              duration={this.state.duration}
+              frequency={this.state.frequency}
             />
           </div>
-          <div className="Tasks-input">
-            <h3>Tasks</h3>
-            <Tasks
-              handleTaskChange={this.handleTaskChange}
-              taskInputValue={this.state.taskInputValue}
-              handleTaskSubmit={this.handleTaskSubmit}
-            />
-            <TaskList
-              handleTaskDelete={this.handleTaskDelete}
-              tasks={this.state.tasks}
-            />
-          </div>
-          <div className="Length-freq">
-            <h3>Length and Frequency</h3>
-            <Frequency 
-            handleDuration={this.handleDuration}
-            duration ={this.state.duration}
-            handleFreq={this.handleFreq}
-            />
-          </div>
-        </div>
-        <div className="CurrentConfig">
-          <Schedule 
-            people={this.state.people}
-            taskList={this.state.taskList}
-            duration={this.state.duration}
-            frequency={this.state.frequency}
-          />
-          <Calendar className="myCal"/>
-          <button>Generate schedule</button>
-        </div>
-        <div className="generatedTable">
-          <Table
-            people = {this.state.people}
-            tasks = {this.state.taskList}
-            duration={this.state.duration}
-            frequency={this.state.frequency}
-          />
         </div>
       </div>
     );

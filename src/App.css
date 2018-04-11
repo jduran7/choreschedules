@@ -1,9 +1,24 @@
+html, body {
+  height:100%;
+  background-image: url('./img/cork-wallet.png');
+  background-repeat: repeat;
+  padding-top: 2.5%;
+}
 
-.App{
-  max-width: 1200px;
+.App-container{
+  max-width: 800px;
   margin: auto;
   padding: 0;
-  border: solid 1px;
+}
+
+.App{
+  /* padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  margin: auto;
+  padding: 0; */
+  border: solid 2px grey;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .Settings {
@@ -12,16 +27,19 @@
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Create three equal columns that floats next to each other */
 .Name-input, .Tasks-input, .Length-freq {
   float: left;
   width: 33.33%;
-  padding: 10px;
-  min-height: 400px;
-  padding: 20px;
+  padding: 15px;
+  min-height: 300px;
+}
+
+.Name-input, .Tasks-input{
+  border-right: 1px solid;
 }
 
 /* Clear floats after the columns */
@@ -38,13 +56,17 @@
 
 
 .Names, .Name, .Tasks, .Task, .Frequency{
-  padding-top: 15px;
+  padding-top: 7.5px;
+}
+
+.Name span, .Task span{
+  font-style: italic;
 }
 
 .Frequency{
   text-align: justify;
   text-justify: inter-word;
-  max-width: 80%;
+  max-width: 100%;
   margin: auto;
   padding: 0;
 }
@@ -115,7 +137,7 @@
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 
-  height: 800px;
+  min-height: 400px;
   padding:0;
   background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
   background-repeat: no-repeat;
@@ -130,7 +152,6 @@
 
 .myTable{
   margin: auto;
-  width: 50%;
   padding: 20px;
 }
 
@@ -140,11 +161,14 @@
 
 .table
 {
+    margin: auto;
+    padding: 0;
   	position:relative;
     -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
             box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
+
 .table:before, .table:after
 {
 	content:"";
@@ -160,6 +184,7 @@
     -moz-border-radius:100px / 10px;
     border-radius:100px / 10px;
 }
+
 .table:after
 {
 	right:10px;
@@ -169,4 +194,9 @@
         -ms-transform:skew(8deg) rotate(3deg);
          -o-transform:skew(8deg) rotate(3deg);
             transform:skew(8deg) rotate(3deg);
+}
+
+td:nth-child(1) {  
+  font-weight: bold;
+  color: grey;
 }
