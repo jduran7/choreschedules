@@ -6,7 +6,7 @@ html, body {
 }
 
 .App-container{
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   padding: 0;
 }
@@ -24,6 +24,8 @@ html, body {
 .Settings {
   text-align: center;
   border-bottom: solid 1px;
+  width: 100%;
+  display: table;
 }
 
 * {
@@ -32,10 +34,10 @@ html, body {
 
 /* Create three equal columns that floats next to each other */
 .Name-input, .Tasks-input, .Length-freq {
-  float: left;
-  width: 33.33%;
+  width: 300px;
   padding: 15px;
   min-height: 300px;
+  display: table-cell
 }
 
 .Name-input, .Tasks-input{
