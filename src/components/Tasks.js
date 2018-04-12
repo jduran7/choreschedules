@@ -10,11 +10,11 @@ class Tasks extends Component {
                         onChange={(evt) => this.props.handleTaskChange(evt)}
                         value={this.props.taskInputValue}
                     />
+                    <button type="submit">ADD</button>
                 </form>
             </div>
         )
     }
-
 }
 
 export default Tasks;

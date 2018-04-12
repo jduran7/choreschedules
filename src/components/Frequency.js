@@ -22,7 +22,6 @@ class Frequency extends Component {
                             {/* <option value="4">Once per month</option> */}
                         </select>
                     {/* </div> */}
-                    
                 </form>
             </div>
         )

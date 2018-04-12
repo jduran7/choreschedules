@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 class Table extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            displayTable: false
+        }
+    }
+
+    onClick = (e) => {
+        e.preventDefault();
+        this.setState({displayTable: !this.state.displayTable})
+    }
+
     render(){
 
     	var myTasks = this.props.tasks;
@@ -91,9 +104,8 @@ class Table extends Component {
 
         return (
             <div className="myTable">
-                <div id="main">
-                	<div dangerouslySetInnerHTML={renderTable()} />
-                </div>
+                <button onClick={this.onClick.bind(this)}>Generate schedule</button>
+                {this.state.displayTable && <div dangerouslySetInnerHTML={renderTable()}/>}
             </div>
         )
     }

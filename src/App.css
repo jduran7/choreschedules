@@ -26,6 +26,7 @@ html, body {
   border-bottom: solid 1px;
   width: 100%;
   display: table;
+  min-height: 200px;
 }
 
 * {
@@ -201,4 +202,13 @@ html, body {
 td:nth-child(1) {  
   font-weight: bold;
   color: grey;
+}
+
+.Generator{
+  padding-top: 30px;
+  text-align: center;
+}
+
+.myTable button{
+  float: right;
 }

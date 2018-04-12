@@ -126,6 +126,8 @@ class App extends Component {
               handleDuration={this.handleDuration}
               duration ={this.state.duration}
               handleFreq={this.handleFreq}
+              showTable = {this.state.showTable}
+              generateTable={this.generateTable}
               />
             </div>
           </div>

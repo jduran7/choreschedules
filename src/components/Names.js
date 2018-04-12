@@ -10,7 +10,9 @@ class Names extends Component {
                         onChange={(evt) => this.props.handleNameChange(evt)}
                         value={this.props.nameInputValue}
                     />
+                    <button type="submit">ADD</button>
                 </form>
+                
             </div>
         )
     }
