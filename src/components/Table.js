@@ -12,7 +12,12 @@ class Table extends Component {
 
     onClick = (e) => {
         e.preventDefault();
-        this.setState({displayTable: !this.state.displayTable})
+        if(this.props.people.length == 0 || this.props.tasks.length == 0) {
+            alert("Please make sure you've added some people and tasks");
+        }
+        else{
+            this.setState({displayTable: !this.state.displayTable});
+        }
     }
 
     render(){

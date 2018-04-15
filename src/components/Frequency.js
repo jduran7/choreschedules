@@ -6,7 +6,7 @@ class Frequency extends Component {
             <div className="Frequency">
                 <form>
                     {"I need a schedule for the following "} 
-                    <input size="1" onChange={(evt) => this.props.handleDuration(evt)}/>
+                    <input size="1" placeholder="8" onChange={(evt) => this.props.handleDuration(evt)}/>
                     <div className="UnitSelection">
                         <select>
                             <option value="weeks">Weeks</option>
