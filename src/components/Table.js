@@ -106,12 +106,12 @@ class Table extends Component {
 			  }
 			  table+='</tr>';
             }
-            console.log(cols)
+            console.log("cols:"+ cols, "rows: "+ rows)
 			return {__html: '<table class="table">'+table+'</table>'};
         }
 
         function saveTable() {
-            
+
         }
 
         function generatePdf() {
