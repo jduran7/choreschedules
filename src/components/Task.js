@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faWindowClose from '@fortawesome/fontawesome-free-solid/faWindowClose';
 
 class Task extends Component {
     render(){
@@ -8,9 +10,9 @@ class Task extends Component {
                     {this.props.task.value}
                 </span>
                 <div className="DeleteButton">
-                    <button onClick={() => 
-                        this.props.handleTaskDelete(this.props.index)}
-                    >X</button>
+                    <div onClick={() => this.props.handleTaskDelete(this.props.index)}>
+                        <FontAwesomeIcon icon={faWindowClose}/>
+                    </div>
                 </div>
             </div>
         )

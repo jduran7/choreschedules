@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import {faFilePdf, faCalendarCheck} from '@fortawesome/fontawesome-free-solid'
 
 class Table extends Component {
 
@@ -12,11 +14,11 @@ class Table extends Component {
 
     onClick = (e) => {
         e.preventDefault();
-        if(this.props.people.length == 0 || this.props.tasks.length == 0) {
+        if(this.props.people.length === 0 || this.props.tasks.length === 0) {
             alert("Please make sure you've added some people and tasks");
         }
         else{
-            this.setState({displayTable: !this.state.displayTable});
+            this.setState({displayTable: true})
         }
     }
 
@@ -103,14 +105,24 @@ class Table extends Component {
 			    table+='<td><div id="names">'+source[rows[r]][c]+'</div></td>';
 			  }
 			  table+='</tr>';
-			}
+            }
+            console.log(cols)
 			return {__html: '<table class="table">'+table+'</table>'};
+        }
+
+        function saveTable() {
+            
+        }
+
+        function generatePdf() {
+            console.log('PDF is being generated');
         }
 
         return (
             <div className="myTable">
-                <button onClick={this.onClick.bind(this)}>Generate schedule</button>
+                <button className="CalendarButton" onClick={this.onClick.bind(this)}>Generate <FontAwesomeIcon className="CalendarIcon" icon={faCalendarCheck}/></button>
                 {this.state.displayTable && <div dangerouslySetInnerHTML={renderTable()}/>}
+                {this.state.displayTable && <div className="PdfButton"><button>Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
             </div>
         )
     }

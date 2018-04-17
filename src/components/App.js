@@ -12,6 +12,9 @@ import Table from './Table';
 // import InfiniteCalendar from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
 
+
+
+
 class App extends Component {
 
   state = {
@@ -73,9 +76,14 @@ class App extends Component {
     const names = this.state.names;
     const myPeople = this.state.people;
 
-    names.push(newName);
-    myPeople.push(newName.value);
-    this.setState({ names, nameInputValue:'' , people:myPeople})
+    if (newName.value.length > 0) {
+      names.push(newName);
+      myPeople.push(newName.value);
+      this.setState({ names, nameInputValue:'' , people:myPeople})
+    }
+    else{
+      alert("please add a valid name");
+    }
   }
 
   handleTaskSubmit = (evt) => {
@@ -85,50 +93,70 @@ class App extends Component {
     };
     const tasks = this.state.tasks;
     const myTasks = this.state.taskList;
-    tasks.push(newTask);
-    myTasks.push(newTask.value);
-    this.setState({ tasks, taskInputValue:'', taskList: myTasks })
+    if (newTask.value.length > 1){
+      tasks.push(newTask);
+      myTasks.push(newTask.value);
+      this.setState({ tasks, taskInputValue:'', taskList: myTasks })
+    }
+    else{
+      alert("please add a valid task");
+    }
   }
 
   render() {
 
     return (
       <div className="App-container">
+        <div className="App-title">
+          <h1>Chore schedule generator </h1>
+        </div>
         <div className="App">
           <div className="Settings">
             <div className="Name-input">
-              <h4>Names</h4>
-              <Names
-                handleNameChange={this.handleNameChange}
-                nameInputValue={this.state.nameInputValue}
-                handleNameSubmit={this.handleNameSubmit}
-              />
-              <List
-                handleNameDelete={this.handleNameDelete}
-                names={this.state.names}
-              />
+              <div className = "Section-title">
+                <h4>Names</h4>
+              </div>
+              <div className="Section-content">
+                <Names
+                  handleNameChange={this.handleNameChange}
+                  nameInputValue={this.state.nameInputValue}
+                  handleNameSubmit={this.handleNameSubmit}
+                />
+                <List
+                  handleNameDelete={this.handleNameDelete}
+                  names={this.state.names}
+                />
+              </div>
             </div>
             <div className="Tasks-input">
-              <h4>Tasks</h4>
-              <Tasks
-                handleTaskChange={this.handleTaskChange}
-                taskInputValue={this.state.taskInputValue}
-                handleTaskSubmit={this.handleTaskSubmit}
-              />
-              <TaskList
-                handleTaskDelete={this.handleTaskDelete}
-                tasks={this.state.tasks}
-              />
+              <div className = "Section-title">
+                <h4>Tasks</h4>
+              </div>
+              <div className="Section-content">
+                <Tasks
+                  handleTaskChange={this.handleTaskChange}
+                  taskInputValue={this.state.taskInputValue}
+                  handleTaskSubmit={this.handleTaskSubmit}
+                />
+                <TaskList
+                  handleTaskDelete={this.handleTaskDelete}
+                  tasks={this.state.tasks}
+                />
+              </div>
             </div>
             <div className="Length-freq">
-              <h4>Length & Frequency</h4>
-              <Frequency 
-              handleDuration={this.handleDuration}
-              duration ={this.state.duration}
-              handleFreq={this.handleFreq}
-              showTable = {this.state.showTable}
-              generateTable={this.generateTable}
-              />
+              <div className = "Section-title">
+                <h4>Length & Frequency</h4>
+              </div>
+              <div className="Section-content">
+                <Frequency 
+                handleDuration={this.handleDuration}
+                duration ={this.state.duration}
+                handleFreq={this.handleFreq}
+                showTable = {this.state.showTable}
+                generateTable={this.generateTable}
+                />
+              </div>
             </div>
           </div>
           {/* <div className="CurrentConfig">

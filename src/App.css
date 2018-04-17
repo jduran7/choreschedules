@@ -11,6 +11,28 @@ html, body {
   padding: 0;
 }
 
+.App-title{
+  text-align: center;
+  padding-bottom: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.App-title h1{
+    color: white;
+    text-shadow: 0 1px 0 #ccc,
+                 0 2px 0 #c9c9c9,
+                 0 3px 0 #bbb,
+                 0 4px 0 #b9b9b9,
+                 0 5px 0 #aaa,
+                 0 5px 1px rgba(0,0,0,.1),
+                 0 0 5px rgba(0,0,0,.1),
+                 0 1px 3px rgba(0,0,0,.3),
+                 0 3px 5px rgba(0,0,0,.2),
+                 0 5px 10px rgba(0,0,0,.25),
+                 0 10px 10px rgba(0,0,0,.2),
+                 0 20px 20px rgba(0,0,0,.15);
+}
+
 .App{
   /* padding-top: 1.5%;
   padding-bottom: 1.5%;
@@ -29,16 +51,28 @@ html, body {
   min-height: 200px;
 }
 
+.Section-title{
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: rgba(0, 26, 255, 0.192);
+  width: 100%;
+  height: 60px;
+  padding-top: 10px;
+}
+
+
 * {
   box-sizing: border-box;
+}
+
+.Section-content {
+  padding: 15px;
 }
 
 /* Create three equal columns that floats next to each other */
 .Name-input, .Tasks-input, .Length-freq {
   width: 300px;
-  padding: 15px;
   min-height: 300px;
-  display: table-cell
+  display: table-cell;
 }
 
 .Name-input, .Tasks-input{
@@ -211,4 +245,23 @@ td:nth-child(1) {
 
 .myTable button{
   float: right;
+}
+
+.RedPdf{
+  color: red !important;
+  display: inline;
+}
+
+.DeleteButton{
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #30357e;
+}
+
+.DeleteButton:hover{
+  color: red;
+}
+
+.CalendarButton:hover .CalendarIcon{
+  color: green;
 }
