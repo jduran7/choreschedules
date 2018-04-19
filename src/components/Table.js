@@ -24,7 +24,57 @@ class Table extends Component {
 
     render(){
 
-    	var myTasks = this.props.tasks;
+        var myTasks = this.props.tasks;
+        
+        var jsPDF = require('jspdf');
+
+        //add jsPDF support
+        // document.getElementById('export').addEventListener('click', exportPDF);
+
+        var specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '.no-export': function(element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true;
+            }
+        };
+
+        function exportPDF() {
+            
+            console.log('firing exportPDF! ..... ')
+
+            var doc = new jsPDF('p', 'pt', 'a4');
+            //A4 - 595x842 pts
+            //https://www.gnu.org/software/gv/manual/html_node/Paper-Keywords-and-paper-size-in-points.html
+
+
+            //Html source 
+            var source = document.getElementById('generatePdf').innerHTML;
+
+            var margins = {
+                top: 10,
+                bottom: 10,
+                left: 10,
+                width: 595
+            };
+
+            doc.fromHTML(
+                source, // HTML string or DOM elem ref.
+                margins.left,
+                margins.top, {
+                'width': margins.width,
+                'elementHandlers': specialElementHandlers
+                },
+
+                function(dispose) {
+                // dispose: object with X, Y of the last line add to the PDF 
+                //          this allow the insertion of new lines after html
+                doc.save('Schedule.pdf');
+            }, margins);
+        }
+
+
+    
 
     	function shuffle(array) {
             var copy = array.slice(), newArray = [], n = array.length, i;
@@ -106,23 +156,16 @@ class Table extends Component {
 			  }
 			  table+='</tr>';
             }
-            console.log("cols:"+ cols, "rows: "+ rows)
+            
 			return {__html: '<table class="table">'+table+'</table>'};
         }
 
-        function saveTable() {
-
-        }
-
-        function generatePdf() {
-            console.log('PDF is being generated');
-        }
 
         return (
-            <div className="myTable">
+            <div className="MyTable">
                 <button className="CalendarButton" onClick={this.onClick.bind(this)}>Generate <FontAwesomeIcon className="CalendarIcon" icon={faCalendarCheck}/></button>
-                {this.state.displayTable && <div dangerouslySetInnerHTML={renderTable()}/>}
-                {this.state.displayTable && <div className="PdfButton"><button>Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
+                {this.state.displayTable && <div id="generatePdf" dangerouslySetInnerHTML={renderTable()}/>}
+                {this.state.displayTable && <div className="PdfButton"><button id="export" onClick={exportPDF} >Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
             </div>
         )
     }

@@ -41,6 +41,7 @@ html, body {
   border: solid 2px grey;
   background-color: white;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .Settings {
@@ -187,9 +188,10 @@ html, body {
   border-radius: 5px
 }
 
-.myTable{
+.MyTable{
   margin: auto;
   padding: 20px;
+  padding-bottom: 50px;
 }
 
 .main {
@@ -243,7 +245,7 @@ td:nth-child(1) {
   text-align: center;
 }
 
-.myTable button{
+.MyTable button{
   float: right;
 }
 

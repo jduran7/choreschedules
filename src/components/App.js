@@ -93,7 +93,7 @@ class App extends Component {
     };
     const tasks = this.state.tasks;
     const myTasks = this.state.taskList;
-    if (newTask.value.length > 1){
+    if (newTask.value.length > 0){
       tasks.push(newTask);
       myTasks.push(newTask.value);
       this.setState({ tasks, taskInputValue:'', taskList: myTasks })
@@ -159,16 +159,6 @@ class App extends Component {
               </div>
             </div>
           </div>
-          {/* <div className="CurrentConfig">
-            <Schedule 
-              people={this.state.people}
-              taskList={this.state.taskList}
-              duration={this.state.duration}
-              frequency={this.state.frequency}
-            />
-            <Calendar className="myCal"/>
-            <button>Generate schedule</button>
-          </div> */}
           <div className="generatedTable">
             <Table
               people = {this.state.people}
