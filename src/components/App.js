@@ -21,8 +21,7 @@ class App extends Component {
     nameInputValue: '',
     taskInputValue: '',
     names: [],
-    tasks: [
-    ],
+    tasks: [],
     duration: 8,
     frequency: 1,
     startDate: '',
@@ -108,7 +107,7 @@ class App extends Component {
     return (
       <div className="App-container">
         <div className="App-title">
-          <h1>Chore schedule generator </h1>
+          {/* <h1>Chore schedule generator </h1> */}
         </div>
         <div className="App">
           <div className="Settings">
@@ -167,6 +166,9 @@ class App extends Component {
               frequency={this.state.frequency}
             />
           </div>
+        </div>
+        <div className="footerLink">
+        {"Made with"} <span >&#9829;</span> {"by "} <a href='http://jduran.me'>Jose Duran</a>
         </div>
       </div>
     );

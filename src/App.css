@@ -2,7 +2,7 @@ html, body {
   height:100%;
   background-image: url('./img/cork-wallet.png');
   background-repeat: repeat;
-  padding-top: 2.5%;
+  padding-top: 15px;
 }
 
 .App-container{
@@ -15,9 +15,10 @@ html, body {
   text-align: center;
   padding-bottom: 20px;
   font-family: 'Roboto Condensed', sans-serif;
+  color: #000000;
 }
 
-.App-title h1{
+/* .App-title h1{
     color: white;
     text-shadow: 0 1px 0 #ccc,
                  0 2px 0 #c9c9c9,
@@ -31,7 +32,7 @@ html, body {
                  0 5px 10px rgba(0,0,0,.25),
                  0 10px 10px rgba(0,0,0,.2),
                  0 20px 20px rgba(0,0,0,.15);
-}
+} */
 
 .App{
   /* padding-top: 1.5%;
@@ -54,7 +55,8 @@ html, body {
 
 .Section-title{
   font-family: 'Roboto Condensed', sans-serif;
-  background-color: rgba(0, 26, 255, 0.192);
+  background-color: rgba(10, 161, 199, 0.24);
+
   width: 100%;
   height: 60px;
   padding-top: 10px;
@@ -100,6 +102,7 @@ html, body {
 .Name span, .Task span{
   font-style: italic;
 }
+
 
 .Frequency{
   text-align: justify;
@@ -191,7 +194,6 @@ html, body {
 .MyTable{
   margin: auto;
   padding: 20px;
-  padding-bottom: 50px;
 }
 
 .main {
@@ -267,3 +269,74 @@ td:nth-child(1) {
 .CalendarButton:hover .CalendarIcon{
   color: green;
 }
+
+.GenerateButton{
+  padding-bottom:40px;
+}
+
+.PdfButton {
+  padding-top:20px;
+  padding-bottom: 20px;
+}
+
+.footerLink{
+  text-align: right;
+}
+
+.footerLink >span{
+  color: #e25555
+}
+
+input[type=text]{
+  /* width:100%; */
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px 0;
+  outline: none;
+  padding: 6px;
+  box-sizing: border-box;
+  transition: .3s;
+}
+
+input[type=text]:focus{
+  border-color:dodgerblue;
+  box-shadow: 0 0 8px dodgerblue;
+}
+
+.AddButton {
+  display:inline-block;
+  width:25px;
+  height:25px;
+  line-height:13px;
+  border: none;
+  border-radius: 50%;
+  color:#f5f5f5;
+  text-align:center;
+  text-decoration:none;
+  background: #307acd;
+  font-size:20px;
+  /* font-weight:bold; */
+  margin-left: 8px;
+  outline: none;
+}
+
+.AddButton:hover {
+  background: #4e8cd3;
+}
+
+/* .AddButton {
+  display:inline-block;
+  width:40px;
+  height:40px;
+  line-height:20px;
+  border: none;
+  border-radius: 50%;
+  color:#f5f5f5;
+  text-align:center;
+  text-decoration:none;
+  background: #307acd;
+  font-size:20px;
+  font-weight:bold;
+  margin-left: 8px;
+  outline: none;
+} */

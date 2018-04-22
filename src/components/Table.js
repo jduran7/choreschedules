@@ -27,54 +27,17 @@ class Table extends Component {
         var myTasks = this.props.tasks;
         
         var jsPDF = require('jspdf');
-
-        //add jsPDF support
-        // document.getElementById('export').addEventListener('click', exportPDF);
-
-        var specialElementHandlers = {
-            // element with id of "bypass" - jQuery style selector
-            '.no-export': function(element, renderer) {
-                // true = "handled elsewhere, bypass text extraction"
-                return true;
-            }
-        };
+        require('jspdf-autotable');
 
         function exportPDF() {
-            
-            console.log('firing exportPDF! ..... ')
-
-            var doc = new jsPDF('p', 'pt', 'a4');
-            //A4 - 595x842 pts
-            //https://www.gnu.org/software/gv/manual/html_node/Paper-Keywords-and-paper-size-in-points.html
-
-
-            //Html source 
-            var source = document.getElementById('generatePdf').innerHTML;
-
-            var margins = {
-                top: 10,
-                bottom: 10,
-                left: 10,
-                width: 595
-            };
-
-            doc.fromHTML(
-                source, // HTML string or DOM elem ref.
-                margins.left,
-                margins.top, {
-                'width': margins.width,
-                'elementHandlers': specialElementHandlers
-                },
-
-                function(dispose) {
-                // dispose: object with X, Y of the last line add to the PDF 
-                //          this allow the insertion of new lines after html
-                doc.save('Schedule.pdf');
-            }, margins);
+            var doc = new jsPDF();
+            doc.text("Schedule generated with CSG", 14, 16);
+            doc.text("Please visit", 14, 16, {startY: 20});
+            var elem = document.getElementById("myGeneratedHtmlTable");
+            var res = doc.autoTableHtmlToJson(elem);
+            doc.autoTable(res.columns, res.data, {startY: 30});
+            doc.save('Schedule.pdf');
         }
-
-
-    
 
     	function shuffle(array) {
             var copy = array.slice(), newArray = [], n = array.length, i;
@@ -157,13 +120,15 @@ class Table extends Component {
 			  table+='</tr>';
             }
             
-			return {__html: '<table class="table">'+table+'</table>'};
+			return {__html: '<table id="myGeneratedHtmlTable" class="table" style="font-size:0.8em;">'+table+'</table>'};
         }
 
 
         return (
             <div className="MyTable">
-                <button className="CalendarButton" onClick={this.onClick.bind(this)}>Generate <FontAwesomeIcon className="CalendarIcon" icon={faCalendarCheck}/></button>
+                <div className="GenerateButton">
+                    <button className="CalendarButton" onClick={this.onClick.bind(this)}>Generate <FontAwesomeIcon className="CalendarIcon" icon={faCalendarCheck}/></button>
+                </div>
                 {this.state.displayTable && <div id="generatePdf" dangerouslySetInnerHTML={renderTable()}/>}
                 {this.state.displayTable && <div className="PdfButton"><button id="export" onClick={exportPDF} >Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
             </div>
