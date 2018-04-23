@@ -31,8 +31,7 @@ class Table extends Component {
 
         function exportPDF() {
             var doc = new jsPDF();
-            doc.text("Schedule generated with CSG", 14, 16);
-            doc.text("Please visit", 14, 16, {startY: 20});
+            doc.text("Schedule generated with CSG (http://choresg.com)", 14, 16);
             var elem = document.getElementById("myGeneratedHtmlTable");
             var res = doc.autoTableHtmlToJson(elem);
             doc.autoTable(res.columns, res.data, {startY: 30});
