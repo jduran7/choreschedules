@@ -11,7 +11,7 @@ class Tasks extends Component {
                         onChange={(evt) => this.props.handleTaskChange(evt)}
                         value={this.props.taskInputValue}
                     />
-                    <button className="AddButton" type="submit">+</button>
+                    <div className="CircleButton"><button className="CircleText" type="submit">+</button></div>
                 </form>
             </div>
         )
