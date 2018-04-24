@@ -22,7 +22,9 @@ class List extends Component {
             <div className="List">
                 {this.props.names.map((name, index) => {
                     return (
-                        <StyleRoot style={styles.pulse}>
+                        <StyleRoot style={styles.pulse} key={index}
+                        index={index}>
+
                             <Name 
                                 key={index}
                                 index={index}

@@ -98,17 +98,19 @@ class Table extends Component {
             return firstDay + " - " + lastDay;
         }
 
-        function generateList(weeks,interval) {
+        function generateList(weeks,interval, start) {
             var weekList = [];
             for (var i=0;i<weeks/interval;i++) {
-                weekList.push(getWeek(moment().clone().add(i*interval,'week'),interval));
+                weekList.push(getWeek(moment(start).add(i*interval,'week'),interval));
             }
             return weekList;
         }
 
+        var myDate = this.props.startDate;
+
 		function assignChores(people, tasks, weeks, interval){
           var myPeople = shuffle(people);
-          var myList = generateList(weeks, interval);
+          var myList = generateList(weeks, interval, myDate);
           var sequence = [];
           var sortedSequence = [];
           var finalSchedule = {};

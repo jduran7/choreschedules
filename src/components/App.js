@@ -6,7 +6,6 @@ import List from './List';
 import TaskList from './TaskList';
 import Frequency from './Frequency';
 // import Schedule from './Schedule';
-// import Calendar from 'react-calendar';
 import Table from './Table';
 // import moment from 'moment';
 // import InfiniteCalendar from 'react-infinite-calendar';
@@ -26,10 +25,10 @@ class App extends Component {
     units: 1,
     duration: 8,
     frequency: 1,
-    startDate: '',
     people: [],
     taskList: [],
-    showTable: false
+    showTable: false,
+    startDate: new Date()
   }
 
   handleDuration = (evt) => {
@@ -87,6 +86,10 @@ class App extends Component {
   handleTaskChange = (evt) => {
     // console.log(evt.target.value);
     this.setState({ taskInputValue: evt.target.value })
+  }
+
+  handleStartDate = (evt) =>{
+    this.setState({ startDate: evt })
   }
 
   handleNameSubmit = (evt) => {
@@ -181,6 +184,8 @@ class App extends Component {
                 handleUnits={this.handleUnits}
                 showTable = {this.state.showTable}
                 generateTable={this.generateTable}
+                handleStartDate={this.handleStartDate}
+                startDate={this.state.startDate}
                 />
               </div>
             </div>
@@ -193,6 +198,7 @@ class App extends Component {
               frequency={this.state.frequency}
               showTable={this.state.showTable}
               toggleTable={this.toggleTable}
+              startDate={this.state.startDate}
             />
           </div>
         </div>

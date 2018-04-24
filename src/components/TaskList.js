@@ -18,7 +18,8 @@ class TaskList extends Component {
             <div className="TaskList">
                 {this.props.tasks.map((task, index) => {
                     return (
-                        <StyleRoot style={styles.pulse}>
+                        <StyleRoot style={styles.pulse} key={index}
+                        index={index}>
                             <Task 
                                 key={index}
                                 index={index}

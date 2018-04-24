@@ -353,3 +353,11 @@ input[type=text]:focus{
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
   }
+
+  .DatePicker{
+    padding-top: 10px;
+  }
+
+  .react-calendar__tile--active {
+  background-color: #307acd !important;
+}

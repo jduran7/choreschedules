@@ -1,6 +1,16 @@
 import React, {Component} from 'react';
+import DatePicker from 'react-date-picker'
 
 class Frequency extends Component {
+
+    // state = {
+    //     date: this.props.startDate,
+    //   }
+
+    // //   onChange = (date) => {
+    // //       this.setState({ date })
+    // //     //   this.props.handleStartDate(date)
+    // //   }
 
     render(){
         return (
@@ -31,6 +41,15 @@ class Frequency extends Component {
                         </select>
                     {/* </div> */}
                 </form>
+                <div className="DatePicker">
+                {"starting on "}
+                    <DatePicker
+                        onChange={(date) => this.props.handleStartDate(date)}
+                        value={this.props.startDate}
+                        handleStartDate={this.handleStartDate}
+                        minDate={new Date()}
+                    />
+                </div> 
             </div>
         )
     }
