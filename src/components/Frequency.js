@@ -1,16 +1,24 @@
 import React, {Component} from 'react';
 
 class Frequency extends Component {
+
     render(){
         return (
             <div className="Frequency">
                 <form>
                     {"I need a schedule for the following "} 
-                    <input size="1" placeholder="8" onChange={(evt) => this.props.handleDuration(evt)}/>
+                    <input 
+                        size="1" 
+                        placeholder="8" 
+                        onChange={(evt) => this.props.handleDuration(evt)} 
+                        onKeyPress={e => {
+                            if (e.key === 'Enter') e.preventDefault();
+                        }}
+                    />
                     <div className="UnitSelection">
-                        <select>
-                            <option value="weeks">Weeks</option>
-                            <option value="months">Months</option>
+                        <select onChange={(evt) => this.props.handleUnits(evt)}>
+                            <option value="1">Weeks</option>
+                            <option value="4">Months</option>
                         </select>
                     </div>
                     {" and participants should be doing these chores "}

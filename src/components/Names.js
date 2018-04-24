@@ -11,7 +11,6 @@ class Names extends Component {
                         onChange={(evt) => this.props.handleNameChange(evt)}
                         value={this.props.nameInputValue}
                     />
-                    {/* <button className="AddButton" type="submit">+</button> */}
                     <div className="CircleButton"><button className="CircleText NoSelect" type="submit">+</button></div>
                 </form>
             </div>

@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import {faFilePdf, faCalendarCheck} from '@fortawesome/fontawesome-free-solid'
+import Radium, {StyleRoot} from 'radium';
+import fadeInDown from 'react-animations/lib/fade-in-down';
+
+const styles = {
+    fadeInDown: {
+        animation: 'x 0.5s',
+        animationName: Radium.keyframes(fadeInDown, 'fadeInDown')
+      }
+  }
 
 class Table extends Component {
 
@@ -18,7 +27,8 @@ class Table extends Component {
             alert("Please make sure you've added some people and tasks");
         }
         else{
-            this.setState({displayTable: true})
+            // this.setState({displayTable: true})
+            this.props.toggleTable();
         }
     }
 
@@ -104,6 +114,7 @@ class Table extends Component {
 		var cols = this.props.tasks.length;
 
     	function renderTable() {
+            console.log('fired!')
     		var table = '';
     		table+='<thead class="thead-light"><tr><td></td>'; 
 			for(var i=0;i<myTasks.length;i++){
@@ -128,8 +139,10 @@ class Table extends Component {
                 <div className="GenerateButton">
                     <button className="CalendarButton" onClick={this.onClick.bind(this)}>Generate <FontAwesomeIcon className="CalendarIcon" icon={faCalendarCheck}/></button>
                 </div>
-                {this.state.displayTable && <div id="generatePdf" dangerouslySetInnerHTML={renderTable()}/>}
-                {this.state.displayTable && <div className="PdfButton"><button id="export" onClick={exportPDF} >Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
+                <StyleRoot>
+                    {this.props.showTable && <div id="generatePdf" style={styles.fadeInDown} dangerouslySetInnerHTML={renderTable()} />}
+                </StyleRoot>
+                {this.props.showTable && <div className="PdfButton"><button id="export" onClick={exportPDF} >Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
             </div>
         )
     }

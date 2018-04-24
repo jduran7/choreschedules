@@ -22,24 +22,42 @@ class App extends Component {
     taskInputValue: '',
     names: [],
     tasks: [],
+    weeks: 8,
+    units: 1,
     duration: 8,
     frequency: 1,
     startDate: '',
     people: [],
-    taskList: []
+    taskList: [],
+    showTable: false
   }
 
   handleDuration = (evt) => {
     // console.log('changed duration');
-    this.setState({ duration: evt.target.value });
+    if(evt.target.value <= 0) {
+      alert('Please add a valid number');
+    }
+    else {
+      const units = this.state.units;
+      this.setState({ duration: evt.target.value*units });
+    }
+  }
+
+  handleUnits = (evt) => {
+    const weeks = this.state.weeks;
+    this.setState({units: evt.target.value, duration:weeks*evt.target.value})
   }
 
   handleNameDelete = (index) => {
     // console.log('delete clicked', index);
     const names = this.state.names;
     const people = this.state.people;
+    if(people.length === 1 || this.state.taskList.length === 0){
+      console.log("only 1 left");
+      this.setState({showTable: false, tasks:[], taskList:[]});
+    }
     names.splice(index, 1);
-    people.splice(index, 1)
+    people.splice(index, 1);
     this.setState({ names, people });
   }
 
@@ -52,6 +70,10 @@ class App extends Component {
     // console.log('delete clicked', index);
     const tasks = this.state.tasks;
     const myTasks = this.state.taskList;
+    if(myTasks.length === 1 || this.state.people.length === 0){
+      console.log("only 1 left");
+      this.setState({showTable: false, people: [], names:[]});
+    }
     tasks.splice(index, 1);
     myTasks.splice(index, 1);
     this.setState({ tasks, taskList:myTasks });
@@ -81,7 +103,7 @@ class App extends Component {
       this.setState({ names, nameInputValue:'' , people:myPeople})
     }
     else{
-      alert("please add a valid name");
+      alert("please enter a valid name");
     }
   }
 
@@ -98,8 +120,12 @@ class App extends Component {
       this.setState({ tasks, taskInputValue:'', taskList: myTasks })
     }
     else{
-      alert("please add a valid task");
+      alert("please enter a valid task");
     }
+  }
+
+  toggleTable = () => {
+    this.setState({ showTable: true})
   }
 
   render() {
@@ -152,6 +178,7 @@ class App extends Component {
                 handleDuration={this.handleDuration}
                 duration ={this.state.duration}
                 handleFreq={this.handleFreq}
+                handleUnits={this.handleUnits}
                 showTable = {this.state.showTable}
                 generateTable={this.generateTable}
                 />
@@ -164,6 +191,8 @@ class App extends Component {
               tasks = {this.state.taskList}
               duration={this.state.duration}
               frequency={this.state.frequency}
+              showTable={this.state.showTable}
+              toggleTable={this.toggleTable}
             />
           </div>
         </div>
