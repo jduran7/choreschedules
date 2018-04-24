@@ -160,9 +160,10 @@ class Table extends Component {
                     <button className="CalendarButton" onClick={this.onClick.bind(this)}>Generate <FontAwesomeIcon className="CalendarIcon" icon={faCalendarCheck}/></button>
                 </div>
                 <StyleRoot>
-                    {this.props.showTable && <div id="generatePdf" style={styles.fadeInDown} dangerouslySetInnerHTML={renderTable()} />}
+                    {this.props.showTable && <div id="generatePdf" className="NoSelect" style={styles.fadeInDown} dangerouslySetInnerHTML={renderTable()} />}
+                    {this.props.showTable && <div className="PdfButton"><button id="export" onClick={exportPDF} >Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
                 </StyleRoot>
-                {this.props.showTable && <div className="PdfButton"><button id="export" onClick={exportPDF} >Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
+                
             </div>
         )
     }
