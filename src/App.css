@@ -363,9 +363,9 @@ input[type=text]:focus{
 }
 
 .react-date-picker__calendar {
-  width: 300px !important;
+  width: 288px !important;
   max-width: 100vw !important;
   position: absolute !important;
-  top: 233% !important;
-  left: -385px !important;
+  top: 150% !important;
+  left: -78px !important;
 }
