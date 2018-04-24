@@ -354,10 +354,18 @@ input[type=text]:focus{
                                     supported by Chrome and Opera */
   }
 
-  .DatePicker{
-    padding-top: 10px;
-  }
+.DatePicker{
+  padding-top: 10px;
+}
 
-  .react-calendar__tile--active {
+.react-calendar__tile--active {
   background-color: #307acd !important;
+}
+
+.react-date-picker__calendar {
+  width: 300px !important;
+  max-width: 100vw !important;
+  position: absolute !important;
+  top: 233% !important;
+  left: -385px !important;
 }
