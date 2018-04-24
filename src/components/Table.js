@@ -40,11 +40,30 @@ class Table extends Component {
         require('jspdf-autotable');
 
         function exportPDF() {
-            var doc = new jsPDF();
-            doc.text("Schedule generated with CSG (http://choresg.com)", 14, 16);
+            var doc = new jsPDF("l", 'pt', "a4");
+            doc.setTextColor("#7491c1");
+            doc.setFontSize(9);
+            doc.text("Schedule generated with CSG (http://choresg.com)", 633, 15, {styles:{fontStyle: 'italic'}});
             var elem = document.getElementById("myGeneratedHtmlTable");
             var res = doc.autoTableHtmlToJson(elem);
-            doc.autoTable(res.columns, res.data, {startY: 30});
+            // doc.autoTable(res.columns, res.data, {startY: 30});
+            doc.autoTable(res.columns, res.data, {
+                theme: 'striped',
+                startY: 40,
+                margin: { horizontal: 0 },
+                bodyStyles: { valign: 'middle' },
+                styles: { overflow: 'linebreak', columnWidth: 'auto', halign: 'center', valign: 'middle' },
+                columnStyles: {
+                    0: {
+                      columnWidth: 'wrap',
+                      halign: 'left',
+                      fontStyle: 'bold'
+                    }
+                  },
+                drawRow: function (row, data) {
+                    row.height = 30
+                }
+            })
             doc.save('Schedule.pdf');
         }
 
@@ -114,7 +133,6 @@ class Table extends Component {
 		var cols = this.props.tasks.length;
 
     	function renderTable() {
-            console.log('fired!')
     		var table = '';
     		table+='<thead class="thead-light"><tr><td></td>'; 
 			for(var i=0;i<myTasks.length;i++){

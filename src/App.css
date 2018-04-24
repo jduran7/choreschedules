@@ -262,6 +262,7 @@ td:nth-child(1) {
 
 .footerLink{
   text-align: right;
+  padding-bottom: 20px;
 }
 
 .footerLink >span{
