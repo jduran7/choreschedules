@@ -17,7 +17,6 @@ import 'react-infinite-calendar/styles.css'; // Make sure to import the default 
 class App extends Component {
 
   state = {
-    nameInputValue: '',
     taskInputValue: '',
     names: [],
     tasks: [],
@@ -92,18 +91,15 @@ class App extends Component {
     this.setState({ startDate: evt })
   }
 
-  handleNameSubmit = (evt) => {
-    evt.preventDefault();
-    const newName = {
-      value: this.state.nameInputValue
-    };
+  handleNameSubmit = (name) => {
+    console.log(name);
     const names = this.state.names;
     const myPeople = this.state.people;
 
-    if (newName.value.length > 0) {
-      names.push(newName);
-      myPeople.push(newName.value);
-      this.setState({ names, nameInputValue:'' , people:myPeople})
+    if (name.length > 0) {
+      names.push(name);
+      myPeople.push(name);
+      this.setState({ names, people:myPeople})
     }
     else{
       alert("please enter a valid name");
@@ -147,7 +143,6 @@ class App extends Component {
               <div className="Section-content">
                 <Names
                   handleNameChange={this.handleNameChange}
-                  nameInputValue={this.state.nameInputValue}
                   handleNameSubmit={this.handleNameSubmit}
                 />
                 <List

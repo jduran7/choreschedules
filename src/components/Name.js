@@ -8,7 +8,7 @@ class Name extends Component {
         return (
             <div className="Name">
                     <span>
-                        {this.props.name.value}
+                        {this.props.name}
                     </span>
                 <div className="DeleteButton">
                     <div onClick={() => this.props.handleNameDelete(this.props.index)}>

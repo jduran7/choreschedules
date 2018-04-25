@@ -24,7 +24,6 @@ class List extends Component {
                     return (
                         <StyleRoot style={styles.pulse} key={index}
                         index={index}>
-
                             <Name 
                                 key={index}
                                 index={index}
