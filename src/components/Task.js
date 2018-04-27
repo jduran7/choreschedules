@@ -7,7 +7,7 @@ class Task extends Component {
         return (
             <div className="Task">
                 <span>
-                    {this.props.task.value}
+                    {this.props.task}
                 </span>
                 <div className="DeleteButton">
                     <div onClick={() => this.props.handleTaskDelete(this.props.index)}>

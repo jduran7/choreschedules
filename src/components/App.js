@@ -17,7 +17,6 @@ import 'react-infinite-calendar/styles.css'; // Make sure to import the default 
 class App extends Component {
 
   state = {
-    taskInputValue: '',
     names: [],
     tasks: [],
     weeks: 8,
@@ -92,7 +91,6 @@ class App extends Component {
   }
 
   handleNameSubmit = (name) => {
-    console.log(name);
     const names = this.state.names;
     const myPeople = this.state.people;
 
@@ -106,17 +104,14 @@ class App extends Component {
     }
   }
 
-  handleTaskSubmit = (evt) => {
-    evt.preventDefault();
-    const newTask = {
-      value: this.state.taskInputValue
-    };
+  handleTaskSubmit = (task) => {
+
     const tasks = this.state.tasks;
     const myTasks = this.state.taskList;
-    if (newTask.value.length > 0){
-      tasks.push(newTask);
-      myTasks.push(newTask.value);
-      this.setState({ tasks, taskInputValue:'', taskList: myTasks })
+    if (task.length > 0){
+      tasks.push(task);
+      myTasks.push(task);
+      this.setState({ tasks, taskList: myTasks })
     }
     else{
       alert("please enter a valid task");
@@ -142,7 +137,7 @@ class App extends Component {
               </div>
               <div className="Section-content">
                 <Names
-                  handleNameChange={this.handleNameChange}
+                  // handleNameChange={this.handleNameChange}
                   handleNameSubmit={this.handleNameSubmit}
                 />
                 <List
@@ -157,7 +152,7 @@ class App extends Component {
               </div>
               <div className="Section-content">
                 <Tasks
-                  handleTaskChange={this.handleTaskChange}
+                  // handleTaskChange={this.handleTaskChange}
                   taskInputValue={this.state.taskInputValue}
                   handleTaskSubmit={this.handleTaskSubmit}
                 />
