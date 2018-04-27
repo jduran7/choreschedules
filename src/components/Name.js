@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-// import faCalendarCheck from '@fortawesome/fontawesome-free-solid/faCalendarCheck';
-import faWindowClose from '@fortawesome/fontawesome-free-solid/faWindowClose';
+import faTimesCircle from '@fortawesome/fontawesome-free-regular/faTimesCircle';
 
 class Name extends Component {
     render(){
@@ -12,7 +11,7 @@ class Name extends Component {
                     </span>
                 <div className="DeleteButton">
                     <div onClick={() => this.props.handleNameDelete(this.props.index)}>
-                        <FontAwesomeIcon icon={faWindowClose}/>
+                        <FontAwesomeIcon icon={faTimesCircle}/>
                     </div>
                 </div>
             </div>
