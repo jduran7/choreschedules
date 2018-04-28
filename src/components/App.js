@@ -2,35 +2,28 @@ import React, { Component } from 'react';
 import '../App.css';
 import Names from './Names';
 import Tasks from './Tasks';
-import List from './List';
+import NameList from './NameList';
 import TaskList from './TaskList';
 import Frequency from './Frequency';
-// import Schedule from './Schedule';
 import Table from './Table';
-// import moment from 'moment';
-// import InfiniteCalendar from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
-
-
 
 
 class App extends Component {
 
   state = {
-    names: [],
+    people: [],
     tasks: [],
     weeks: 8,
     units: 1,
     duration: 8,
     frequency: 1,
-    people: [],
-    taskList: [],
     showTable: false,
-    startDate: new Date()
+    startDate: new Date(),
+    mainButtonLabel: "generate"
   }
 
   handleDuration = (evt) => {
-    // console.log('changed duration');
     if(evt.target.value <= 0) {
       alert('Please add a valid number');
     }
@@ -46,43 +39,32 @@ class App extends Component {
   }
 
   handleNameDelete = (index) => {
-    // console.log('delete clicked', index);
-    const names = this.state.names;
     const people = this.state.people;
-    if(people.length === 1 || this.state.taskList.length === 0){
-      console.log("only 1 left");
-      this.setState({showTable: false, tasks:[], taskList:[]});
+    if(people.length === 1 || this.state.tasks.length === 0){ // clears both names and tasks if either is emptied
+      this.setState({showTable: false, tasks:[], mainButtonLabel:"generate"});
     }
-    names.splice(index, 1);
     people.splice(index, 1);
-    this.setState({ names, people });
+    this.setState({ people });
   }
 
   handleFreq = (evt) => {
-    // console.log('changed frequency');
     this.setState({ frequency: evt.target.value });
   }
 
   handleTaskDelete = (index) => {
-    // console.log('delete clicked', index);
     const tasks = this.state.tasks;
-    const myTasks = this.state.taskList;
-    if(myTasks.length === 1 || this.state.people.length === 0){
-      console.log("only 1 left");
-      this.setState({showTable: false, people: [], names:[]});
+    if(tasks.length === 1 || this.state.people.length === 0){ // clears both names and tasks if either is emptied
+      this.setState({showTable: false, people: [], mainButtonLabel:"generate"});
     }
     tasks.splice(index, 1);
-    myTasks.splice(index, 1);
-    this.setState({ tasks, taskList:myTasks });
+    this.setState({ tasks });
   }
 
   handleNameChange = (evt) => {
-    // console.log(evt.target.value);
     this.setState({ nameInputValue: evt.target.value })
   }
 
   handleTaskChange = (evt) => {
-    // console.log(evt.target.value);
     this.setState({ taskInputValue: evt.target.value })
   }
 
@@ -91,13 +73,11 @@ class App extends Component {
   }
 
   handleNameSubmit = (name) => {
-    const names = this.state.names;
-    const myPeople = this.state.people;
+    const people = this.state.people;
 
     if (name.length > 0) {
-      names.push(name);
-      myPeople.push(name);
-      this.setState({ names, people:myPeople})
+      people.push(name);
+      this.setState({ people })
     }
     else{
       alert("please enter a valid name");
@@ -107,11 +87,9 @@ class App extends Component {
   handleTaskSubmit = (task) => {
 
     const tasks = this.state.tasks;
-    const myTasks = this.state.taskList;
     if (task.length > 0){
       tasks.push(task);
-      myTasks.push(task);
-      this.setState({ tasks, taskList: myTasks })
+      this.setState({ tasks })
     }
     else{
       alert("please enter a valid task");
@@ -122,12 +100,15 @@ class App extends Component {
     this.setState({ showTable: true})
   }
 
+  updateButtonLabel = (label) => {
+    this.setState({mainButtonLabel:label})
+  }
+
   render() {
 
     return (
       <div className="App-container">
         <div className="App-title">
-          {/* <h1>Chore schedule generator </h1> */}
         </div>
         <div className="App">
           <div className="Settings">
@@ -137,12 +118,11 @@ class App extends Component {
               </div>
               <div className="Section-content">
                 <Names
-                  // handleNameChange={this.handleNameChange}
                   handleNameSubmit={this.handleNameSubmit}
                 />
-                <List
+                <NameList
                   handleNameDelete={this.handleNameDelete}
-                  names={this.state.names}
+                  people={this.state.people}
                 />
               </div>
             </div>
@@ -152,7 +132,6 @@ class App extends Component {
               </div>
               <div className="Section-content">
                 <Tasks
-                  // handleTaskChange={this.handleTaskChange}
                   taskInputValue={this.state.taskInputValue}
                   handleTaskSubmit={this.handleTaskSubmit}
                 />
@@ -183,12 +162,14 @@ class App extends Component {
           <div className="generatedTable">
             <Table
               people = {this.state.people}
-              tasks = {this.state.taskList}
+              tasks = {this.state.tasks}
               duration={this.state.duration}
               frequency={this.state.frequency}
               showTable={this.state.showTable}
               toggleTable={this.toggleTable}
               startDate={this.state.startDate}
+              mainButtonLabel={this.state.mainButtonLabel}
+              updateButtonLabel={this.updateButtonLabel}
             />
           </div>
         </div>

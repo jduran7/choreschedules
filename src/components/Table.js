@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import {faFilePdf, faCalendarCheck} from '@fortawesome/fontawesome-free-solid'
+import {faFilePdf, faRandom} from '@fortawesome/fontawesome-free-solid'
+import {faCalendarCheck} from '@fortawesome/fontawesome-free-regular'
 import Radium, {StyleRoot} from 'radium';
-import fadeInDown from 'react-animations/lib/fade-in-down';
+// import fadeInDown from 'react-animations/lib/fade-in-down';
+import zoomIn from 'react-animations/lib/zoom-in';
+import  {AwesomeButton} from 'react-awesome-button';
+import 'react-awesome-button/dist/themes/theme-blue.css';
 
 const styles = {
-    fadeInDown: {
-        animation: 'x 0.5s',
-        animationName: Radium.keyframes(fadeInDown, 'fadeInDown')
+    zoomIn: {
+        animationDuration: '1s',
+        animationName: Radium.keyframes(zoomIn, 'zoomIn')
       }
   }
 
@@ -22,13 +26,13 @@ class Table extends Component {
     }
 
     onClick = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         if(this.props.people.length === 0 || this.props.tasks.length === 0) {
             alert("Please make sure you've added some people and tasks");
         }
         else{
-            // this.setState({displayTable: true})
             this.props.toggleTable();
+            this.props.updateButtonLabel("shuffle")
         }
     }
 
@@ -150,17 +154,32 @@ class Table extends Component {
 			  table+='</tr>';
             }
             
-			return {__html: '<table id="myGeneratedHtmlTable" class="table" style="font-size:0.8em;">'+table+'</table>'};
+			return {__html: '<table id="myGeneratedHtmlTable" class="table" style="font-size:12px;">'+table+'</table>'};
         }
 
 
         return (
             <div className="MyTable">
                 <div className="GenerateButton">
-                    <button className="CalendarButton" onClick={this.onClick.bind(this)}>Generate <FontAwesomeIcon className="CalendarIcon" icon={faCalendarCheck}/></button>
+                    <AwesomeButton
+                            type="primary"
+                            size="medium"
+                            action={this.onClick.bind(this)}
+                            >
+                            <div className="ButtonTextContainer">
+                                <span className="MainButtonText">
+                                    {this.props.mainButtonLabel[0].toUpperCase() + this.props.mainButtonLabel.substring(1)} 
+                                </span>
+                                <span className="CalendarIcon">
+                                    <FontAwesomeIcon 
+                                        icon={this.props.mainButtonLabel === "shuffle" ? faRandom : faCalendarCheck}
+                                    />
+                                </span>
+                            </div>
+                    </AwesomeButton>
                 </div>
                 <StyleRoot>
-                    {this.props.showTable && <div id="generatePdf" className="NoSelect" style={styles.fadeInDown} dangerouslySetInnerHTML={renderTable()} />}
+                    {this.props.showTable && <div id="generatePdf" className="NoSelect" style={styles.zoomIn} dangerouslySetInnerHTML={renderTable()} />}
                     {this.props.showTable && <div className="PdfButton"><button id="export" onClick={exportPDF} >Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
                 </StyleRoot>
                 

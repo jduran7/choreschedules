@@ -15,6 +15,7 @@
     "react": "^16.3.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-animations": "^1.0.0",
+    "react-awesome-button": "^4.2.0",
     "react-bootstrap": "^0.32.1",
     "react-calendar": "^2.14.0",
     "react-date-picker": "^6.10.1",
@@ -23,6 +24,8 @@
     "react-infinite-calendar": "^2.3.1",
     "react-input-calendar": "^0.5.2",
     "react-materialize": "^2.1.4",
+    "react-native-awesome-button": "^1.8.2",
+    "react-native-really-awesome-button": "^0.8.3",
     "react-scripts": "^1.1.1",
     "react-tiny-calendar": "^0.3.5"
   },

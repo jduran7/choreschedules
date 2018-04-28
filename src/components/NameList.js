@@ -10,17 +10,12 @@ const styles = {
         }
 }
 
-class List extends Component {
-
-    state = {
-        
-    }
-
+class NameList extends Component {
 
     render() {
         return(
             <div className="List">
-                {this.props.names.map((name, index) => {
+                {this.props.people.map((name, index) => {
                     return (
                         <StyleRoot style={styles.pulse} key={index}
                         index={index}>
@@ -39,4 +34,4 @@ class List extends Component {
     }
 }
 
-export default List;
+export default NameList;

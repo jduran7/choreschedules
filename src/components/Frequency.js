@@ -3,15 +3,6 @@ import DatePicker from 'react-date-picker'
 
 class Frequency extends Component {
 
-    // state = {
-    //     date: this.props.startDate,
-    //   }
-
-    // //   onChange = (date) => {
-    // //       this.setState({ date })
-    // //     //   this.props.handleStartDate(date)
-    // //   }
-
     render(){
         return (
             <div className="Frequency">
@@ -32,14 +23,11 @@ class Frequency extends Component {
                         </select>
                     </div>
                     {" and participants should be doing these chores "}
-                    {/* <div className="FreqSelection"> */}
                         <select onChange={(evt) => this.props.handleFreq(evt)}>
                             <option value="1">Weekly</option>
                             <option value="2">Every 2 weeks</option>
                             <option value="3">Every 3 weeks</option>
-                            {/* <option value="4">Once per month</option> */}
                         </select>
-                    {/* </div> */}
                 </form>
                 <div className="DatePicker">
                 {"starting on "}
