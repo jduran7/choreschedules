@@ -7,7 +7,7 @@ import Radium, {StyleRoot} from 'radium';
 // import fadeInDown from 'react-animations/lib/fade-in-down';
 import zoomIn from 'react-animations/lib/zoom-in';
 import  {AwesomeButton} from 'react-awesome-button';
-import 'react-awesome-button/dist/themes/theme-blue.css';
+import '../Button.css';
 
 const styles = {
     zoomIn: {
@@ -182,7 +182,6 @@ class Table extends Component {
                     {this.props.showTable && <div id="generatePdf" className="NoSelect" style={styles.zoomIn} dangerouslySetInnerHTML={renderTable()} />}
                     {this.props.showTable && <div className="PdfButton"><button id="export" onClick={exportPDF} >Download <b>PDF</b> <div className="RedPdf"><FontAwesomeIcon icon={faFilePdf}/></div></button></div>}
                 </StyleRoot>
-                
             </div>
         )
     }
