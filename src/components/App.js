@@ -12,8 +12,8 @@ import 'react-infinite-calendar/styles.css'; // Make sure to import the default 
 class App extends Component {
 
   state = {
-    people: [],
-    tasks: [],
+    people: ['person 1', 'person 2', 'person 3'],
+    tasks: ['task 1', 'task 2', 'task 3'],
     weeks: 8,
     units: 1,
     duration: 8,

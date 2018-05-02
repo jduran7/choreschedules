@@ -4,7 +4,6 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import {faFilePdf, faRandom} from '@fortawesome/fontawesome-free-solid'
 import {faCalendarCheck} from '@fortawesome/fontawesome-free-regular'
 import Radium, {StyleRoot} from 'radium';
-// import fadeInDown from 'react-animations/lib/fade-in-down';
 import zoomIn from 'react-animations/lib/zoom-in';
 import  {AwesomeButton} from 'react-awesome-button';
 import '../Button.css';
@@ -26,7 +25,6 @@ class Table extends Component {
     }
 
     onClick = (e) => {
-        // e.preventDefault();
         if(this.props.people.length === 0 || this.props.tasks.length === 0) {
             alert("Please make sure you've added some people and tasks");
         }
@@ -47,16 +45,26 @@ class Table extends Component {
             var doc = new jsPDF("l", 'pt', "a4");
             doc.setTextColor("#7491c1");
             doc.setFontSize(9);
-            doc.text("Schedule generated with CSG (http://choresg.com)", 633, 15, {styles:{fontStyle: 'italic'}});
+            doc.text(
+                "Schedule generated with CSG (http://choresg.com)", 
+                633, 
+                15, 
+                {styles:{fontStyle: 'italic'}}
+            );
             var elem = document.getElementById("myGeneratedHtmlTable");
             var res = doc.autoTableHtmlToJson(elem);
-            // doc.autoTable(res.columns, res.data, {startY: 30});
+
             doc.autoTable(res.columns, res.data, {
                 theme: 'striped',
                 startY: 40,
                 margin: { horizontal: 0 },
                 bodyStyles: { valign: 'middle' },
-                styles: { overflow: 'linebreak', columnWidth: 'auto', halign: 'center', valign: 'middle' },
+                styles: { 
+                    overflow: 'linebreak', 
+                    columnWidth: 'auto', 
+                    halign: 'center', 
+                    valign: 'middle' 
+                },
                 columnStyles: {
                     0: {
                       columnWidth: 'wrap',
@@ -105,7 +113,9 @@ class Table extends Component {
         function generateList(weeks,interval, start) {
             var weekList = [];
             for (var i=0;i<weeks/interval;i++) {
-                weekList.push(getWeek(moment(start).add(i*interval,'week'),interval));
+                weekList.push(
+                    getWeek(moment(start).add(i*interval,'week'),interval)
+                );
             }
             return weekList;
         }
@@ -134,7 +144,8 @@ class Table extends Component {
           return finalSchedule;
         }
 
-        var source = assignChores(this.props.people, this.props.tasks, this.props.duration, this.props.frequency);
+        var source = assignChores(this.props.people, this.props.tasks, 
+            this.props.duration, this.props.frequency);
 		var rows = Object.keys(source);
 		var cols = this.props.tasks.length;
 
