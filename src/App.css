@@ -148,8 +148,6 @@ html, body {
 .generatedTable{
 
   margin: auto;
-  margin-top: -21px; /*overlap generate button */
-  padding-top: 20px !important;
   padding: 0;
   background: white;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -175,7 +173,7 @@ html, body {
 
 .MyTable{
   margin: auto;
-  padding: 20px;
+  padding-bottom: 20px;
 }
 
 .main {
@@ -261,18 +259,21 @@ td:nth-child(1) {
 }
 
 .GenerateButton{
-  width: 150px;
-  margin-top: -23px !important;
-  /* text-align: center; */
+  /* width: 150px; */
+  /* margin-top: -23px !important; */
+  text-align: center;
   border:none;
-  margin: auto;
+  /* margin: auto; */
   /* display: inline-block; */
   /* padding-bottom:20px; */
+  position:relative;
+  top: -23px;
   
 }
 
 .PdfButton {
   padding-top: 20px;
+  padding-right:20px;
   text-align: right;
 }
 

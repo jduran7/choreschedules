@@ -191,16 +191,16 @@ class App extends Component {
               </div>
             </div>
           </div>
-          <div className="GenerateButton">
-            <MainButton
-                mainButtonLabel={this.state.mainButtonLabel}
-                people={this.state.people}
-                tasks={this.state.tasks}
-                toggleTable={this.toggleTable}
-                updateButtonLabel={this.updateButtonLabel}
-                />
-            </div>
           <div className="generatedTable">
+            <div className="GenerateButton">
+              <MainButton
+                  mainButtonLabel={this.state.mainButtonLabel}
+                  people={this.state.people}
+                  tasks={this.state.tasks}
+                  toggleTable={this.toggleTable}
+                  updateButtonLabel={this.updateButtonLabel}
+                  />
+            </div>
             {this.displayTable()}
           </div>
         </div>
