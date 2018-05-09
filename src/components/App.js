@@ -6,16 +6,18 @@ import NameList from './NameList';
 import TaskList from './TaskList';
 import Frequency from './Frequency';
 import Table from './Table';
+import MainButton from './MainButton';
 import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
+
 
 
 class App extends Component {
 
   state = {
-    // people: ['person 1', 'person 2', 'person 3'],
-    // tasks: ['task 1', 'task 2', 'task 3'],
-    people: [],
-    tasks: [],
+    people: ['person 1', 'person 2', 'person 3'],
+    tasks: ['task 1', 'task 2', 'task 3'],
+    // people: [],
+    // tasks: [],
     weeks: 8,
     units: 1,
     duration: 8,
@@ -106,6 +108,34 @@ class App extends Component {
     this.setState({mainButtonLabel:label})
   }
 
+  onClick = (e) => {
+    if(this.state.people.length === 0 || this.state.tasks.length === 0) {
+        alert("Please make sure you've added some people and tasks");
+    }
+    else{
+        this.toggleTable();
+        this.updateButtonLabel("shuffle");
+    }
+  }
+
+  displayTable = () => {
+    if(this.state.showTable) {
+      return (
+        <Table
+                people = {this.state.people}
+                tasks = {this.state.tasks}
+                duration={this.state.duration}
+                frequency={this.state.frequency}
+                showTable={this.state.showTable}
+                toggleTable={this.toggleTable}
+                startDate={this.state.startDate}
+                mainButtonLabel={this.state.mainButtonLabel}
+                updateButtonLabel={this.updateButtonLabel}
+          />
+      )
+    } 
+  }
+
   render() {
 
     return (
@@ -161,18 +191,17 @@ class App extends Component {
               </div>
             </div>
           </div>
+          <div className="GenerateButton">
+            <MainButton
+                mainButtonLabel={this.state.mainButtonLabel}
+                people={this.state.people}
+                tasks={this.state.tasks}
+                toggleTable={this.toggleTable}
+                updateButtonLabel={this.updateButtonLabel}
+                />
+            </div>
           <div className="generatedTable">
-            <Table
-              people = {this.state.people}
-              tasks = {this.state.tasks}
-              duration={this.state.duration}
-              frequency={this.state.frequency}
-              showTable={this.state.showTable}
-              toggleTable={this.toggleTable}
-              startDate={this.state.startDate}
-              mainButtonLabel={this.state.mainButtonLabel}
-              updateButtonLabel={this.updateButtonLabel}
-            />
+            {this.displayTable()}
           </div>
         </div>
         <div className="footerLink">
