@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Names from './Names';
-import Tasks from './Tasks';
+import NameInput from './NameInput';
+import TaskInput from './TaskInput';
 import NameList from './NameList';
 import TaskList from './TaskList';
 import Frequency from './Frequency';
@@ -12,8 +12,10 @@ import 'react-infinite-calendar/styles.css'; // Make sure to import the default 
 class App extends Component {
 
   state = {
-    people: ['person 1', 'person 2', 'person 3'],
-    tasks: ['task 1', 'task 2', 'task 3'],
+    // people: ['person 1', 'person 2', 'person 3'],
+    // tasks: ['task 1', 'task 2', 'task 3'],
+    people: [],
+    tasks: [],
     weeks: 8,
     units: 1,
     duration: 8,
@@ -117,7 +119,7 @@ class App extends Component {
                 <h4>Names</h4>
               </div>
               <div className="Section-content">
-                <Names
+                <NameInput
                   handleNameSubmit={this.handleNameSubmit}
                 />
                 <NameList
@@ -126,12 +128,12 @@ class App extends Component {
                 />
               </div>
             </div>
-            <div className="Tasks-input">
+            <div className="TaskInput-input">
               <div className = "Section-title">
                 <h4>Tasks</h4>
               </div>
               <div className="Section-content">
-                <Tasks
+                <TaskInput
                   taskInputValue={this.state.taskInputValue}
                   handleTaskSubmit={this.handleTaskSubmit}
                 />

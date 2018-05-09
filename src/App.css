@@ -53,13 +53,13 @@ html, body {
 }
 
 /* Create three equal columns that floats next to each other */
-.Name-input, .Tasks-input, .Length-freq {
+.Name-input, .TaskInput-input, .Length-freq {
   width: 300px;
   min-height: 300px;
   display: table-cell;
 }
 
-.Name-input, .Tasks-input{
+.Name-input, .TaskInput-input{
   border-right: 1px solid;
 }
 
@@ -76,7 +76,7 @@ html, body {
 }
 
 
-.Names, .Name, .Tasks, .Task, .Frequency{
+.NameInput, .Name, .TaskInput, .Task, .Frequency{
   padding-top: 7.5px;
 }
 

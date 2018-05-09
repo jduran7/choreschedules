@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-class Tasks extends Component {
-
+class NameInput extends Component {
     constructor(props) {
             super(props);
             this.state = {
@@ -15,13 +14,13 @@ class Tasks extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.handleTaskSubmit(this.state.inputValue);
+        this.props.handleNameSubmit(this.state.inputValue);
         this.setState({inputValue: ""})
     }
 
     render() {
         return (
-            <div className="Tasks">
+            <div className="NameInput">
                 <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
@@ -33,6 +32,7 @@ class Tasks extends Component {
             </div>
         )
     }
+
 }
 
-export default Tasks;
+export default NameInput;

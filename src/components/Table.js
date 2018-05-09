@@ -30,7 +30,7 @@ class Table extends Component {
         }
         else{
             this.props.toggleTable();
-            this.props.updateButtonLabel("shuffle")
+            this.props.updateButtonLabel("shuffle");
         }
     }
 
@@ -167,8 +167,7 @@ class Table extends Component {
             
 			return {__html: '<table id="myGeneratedHtmlTable" class="table" style="font-size:12px;">'+table+'</table>'};
         }
-
-
+ 
         return (
             <div className="MyTable">
                 <div className="GenerateButton">
