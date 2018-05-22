@@ -9,8 +9,6 @@ import Table from './Table';
 import MainButton from './MainButton';
 import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
 
-
-
 class App extends Component {
 
   state = {
