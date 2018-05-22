@@ -23,6 +23,9 @@ class Table extends Component {
 
     render(){
 
+
+        //PDF
+
         var myTasks = this.props.tasks;
         
         var jsPDF = require('jspdf');
@@ -66,6 +69,8 @@ class Table extends Component {
             doc.save('Schedule.pdf');
         }
 
+        // Model generator
+
     	function shuffle(array) {
             var copy = array.slice(), newArray = [], n = array.length, i;
 
@@ -85,6 +90,8 @@ class Table extends Component {
             return newArray;
         }
 
+        // Model generator
+
         function getWeek(x,interval) {
             var firstDay = x.weekday(1).format('MMMM DD');
             var lastDay = x.clone().add(6*interval+(interval-1),"day");
@@ -97,6 +104,7 @@ class Table extends Component {
             return firstDay + " - " + lastDay;
         }
 
+        // Model generator
         function generateList(weeks,interval, start) {
             var weekList = [];
             for (var i=0;i<weeks/interval;i++) {
@@ -109,6 +117,7 @@ class Table extends Component {
 
         var myDate = this.props.startDate;
 
+        // Model generator
 		function assignChores(people, tasks, weeks, interval){
           var myPeople = shuffle(people);
           var myList = generateList(weeks, interval, myDate);
@@ -136,6 +145,7 @@ class Table extends Component {
 		var rows = Object.keys(source);
 		var cols = this.props.tasks.length;
 
+        // Model generator
     	function renderTable() {
     		var table = '';
     		table+='<thead class="thead-light"><tr><td></td>'; 
@@ -156,6 +166,7 @@ class Table extends Component {
         }
  
         return (
+            //Representation layer
             <div className="MyTable">
                 <StyleRoot>
                     {this.props.showTable && <div id="generatePdf" className="NoSelect" style={styles.zoomIn} dangerouslySetInnerHTML={renderTable()} />}

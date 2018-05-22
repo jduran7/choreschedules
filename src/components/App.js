@@ -23,22 +23,27 @@ class App extends Component {
     mainButtonLabel: "generate"
   }
 
+  //validation
   handleDuration = (evt) => {
     if(evt.target.value <= 0) {
       alert('Please add a valid number');
     }
+    //parameter processor
     else {
       const units = this.state.units;
       this.setState({ duration: evt.target.value*units });
     }
   }
 
+  //parameter processor
   handleUnits = (evt) => {
     const weeks = this.state.weeks;
     this.setState({units: evt.target.value, duration:weeks*evt.target.value})
   }
 
+  //parameter processor & validation
   handleNameDelete = (index) => {
+    //validation
     const people = this.state.people;
     if(people.length === 1 || this.state.tasks.length === 0){ // clears both names and tasks if either is emptied
       this.setState({showTable: false, tasks:[], mainButtonLabel:"generate"});
@@ -47,12 +52,15 @@ class App extends Component {
     this.setState({ people });
   }
 
+  //parameter processor
   handleFreq = (evt) => {
     this.setState({ frequency: evt.target.value });
   }
 
+  //parameter processor & validation
   handleTaskDelete = (index) => {
     const tasks = this.state.tasks;
+    //validation
     if(tasks.length === 1 || this.state.people.length === 0){ // clears both names and tasks if either is emptied
       this.setState({showTable: false, people: [], mainButtonLabel:"generate"});
     }
@@ -60,21 +68,25 @@ class App extends Component {
     this.setState({ tasks });
   }
 
+  //parameter processor
   handleNameChange = (evt) => {
     this.setState({ nameInputValue: evt.target.value })
   }
 
+  //parameter processor
   handleTaskChange = (evt) => {
     this.setState({ taskInputValue: evt.target.value })
   }
 
+  //parameter processor
   handleStartDate = (evt) =>{
     this.setState({ startDate: evt })
   }
 
+  //parameter processor & validation
   handleNameSubmit = (name) => {
     const people = this.state.people;
-
+    //validation
     if (name.length > 0) {
       people.push(name);
       this.setState({ people })
@@ -84,9 +96,11 @@ class App extends Component {
     }
   }
 
+  //parameter processor & validation
   handleTaskSubmit = (task) => {
 
     const tasks = this.state.tasks;
+    //validation
     if (task.length > 0){
       tasks.push(task);
       this.setState({ tasks })
@@ -96,14 +110,17 @@ class App extends Component {
     }
   }
 
+  //Representation layer
   toggleTable = () => {
     this.setState({ showTable: true})
   }
 
+  //representation layer
   updateButtonLabel = (label) => {
     this.setState({mainButtonLabel:label})
   }
 
+  //representation layer
   onClick = (e) => {
     if(this.state.people.length === 0 || this.state.tasks.length === 0) {
         alert("Please make sure you've added some people and tasks");
@@ -114,6 +131,7 @@ class App extends Component {
     }
   }
 
+  //representation layer
   displayTable = () => {
     if(this.state.showTable) {
       return (
