@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import DatePicker from 'react-date-picker'
+import DatePicker from 'react-date-picker';
+// import MomentLocaleUtils, {
+//     formatDate,
+//     parseDate,
+//   } from 'react-day-picker/moment';
 
 class Frequency extends Component {
 
@@ -30,14 +34,17 @@ class Frequency extends Component {
                         </select>
                 </form>
                 <div className="DatePicker">
-                {"starting on "}
+                {"The starting date is: "}
                     <DatePicker
                         onChange={(date) => this.props.handleStartDate(date)}
                         value={this.props.startDate}
                         handleStartDate={this.handleStartDate}
                         minDate={new Date()}
                     />
-                </div> 
+                </div>
+                <div className="DateRange">
+                    {"The current date range is: " + this.props.startDate}
+                </div>
             </div>
         )
     }

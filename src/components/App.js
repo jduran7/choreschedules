@@ -154,8 +154,14 @@ class App extends Component {
 
     return (
       <div className="App-container">
-        <div className="App-title">
-        </div>
+        {/* <div className="App-title">
+          <h1>
+            <span class="Span">
+              <img id="Title-img" src={require('../img/icons/broom.svg')} alt=""/>
+            </span>
+            <span class="Text">CHORE SCHEDULE GENERATOR</span>
+          </h1>  
+        </div> */}
         <div className="App">
           <div className="Settings">
             <div className="Name-input">
@@ -221,6 +227,7 @@ class App extends Component {
         <div className="footerLink">
         {"Made with"} <span >&#9829;</span> {"by "} <a href='http://jduran.me'>Jose Duran</a>
         </div>
+        {/* <div className="footerLink">Icons by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a></div> */}
       </div>
     );
   }

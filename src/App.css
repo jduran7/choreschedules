@@ -18,6 +18,26 @@ html, body {
   color: #000000;
 }
 
+.Span > img {
+  height: 4rem;
+  background: white;
+  border-radius: 50px;
+}
+
+.Span, .Text {
+  vertical-align:middle;
+  display:table-cell;
+}
+
+.Text {
+  padding: 0;
+}
+
+.App-title > h1 {
+  display:table;
+  width:100%;
+}
+
 
 .App{
   border: solid 2px grey;
@@ -30,7 +50,8 @@ html, body {
   text-align: center;
   border-bottom: solid 1px;
   width: 100%;
-  display: table;
+  display: flex;
+  flex-flow: row wrap;
   min-height: 200px;
 }
 
@@ -54,9 +75,10 @@ html, body {
 
 /* Create three equal columns that floats next to each other */
 .Name-input, .TaskInput-input, .Length-freq {
-  width: 300px;
+  min-width: 300px;
   min-height: 300px;
-  display: table-cell;
+  border-bottom: 1px solid black;
+  /* display: table-cell; */
 }
 
 .Name-input, .TaskInput-input{
@@ -64,11 +86,11 @@ html, body {
 }
 
 /* Clear floats after the columns */
-.Settings:after {
+/* .Settings:after {
   content: "";
   display: table;
   clear: both;
-}
+} */
 
 .CurrentConfig {
   padding: 20px;
@@ -390,4 +412,44 @@ input[type=text]:focus{
 
 #generatePdf{
   z-index: 5;
+}
+
+
+@media only screen and (max-width: 725px) {
+  .Name-input, .TaskInput-input{
+    flex: 1 0 50%;
+  }
+  .Length-freq{
+    flex: 0 1 100%;
+  }
+  .Length-freq > .Section-content{
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 726px) {
+  .Name-input, .TaskInput-input{
+    flex: 1 0 33%;
+  }
+  .Length-freq{
+    flex: 1 0 33%;
+  }
+  .Length-freq > .Section-content{
+    width: 65%;
+    margin:auto;
+  }
+}
+
+@media only screen and (max-width: 365px) {
+
+  .Length-freq > .Section-content{
+    width: 90%;
+    /* margin: auto; */
+    
+  }
+
+  .Frequency > .DatePicker{
+    text-align: left;
+  }
 }
